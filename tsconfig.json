@@ -1,0 +1,6 @@
+{
+  "extends": "@twona/typescript-config/base.json",
+  "include": [
+    "eslint.config.mjs"
+  ]
+}
