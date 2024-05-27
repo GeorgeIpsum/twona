@@ -21,6 +21,18 @@ importers:
         specifier: latest
         version: 1.13.3
 
+  apps/electron:
+    devDependencies:
+      '@tilli-pro/eslint-config':
+        specifier: ^2.0.2
+        version: 2.0.2
+      '@twona/typescript-config':
+        specifier: workspace:*
+        version: link:../../packages/typescript-config
+      '@twona/ui':
+        specifier: workspace:*
+        version: link:../../packages/ui
+
   packages/typescript-config: {}
 
   packages/ui:
