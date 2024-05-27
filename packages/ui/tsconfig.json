@@ -12,10 +12,12 @@
   "include": [
     "src",
     "tailwind.config.js",
-    "eslint.config.mjs"
+    "eslint.config.mjs",
+    "postcss.config.js"
   ],
   "exclude": [
     "node_modules",
-    "dist"
+    "dist",
+    "turbo"
   ]
 }
