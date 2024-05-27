@@ -1,4 +1,4 @@
-# twona
+# TWONA
 
 > [!TIP]  
-> _Pronounced **too**·nuh_
+> _**too**·nuh_

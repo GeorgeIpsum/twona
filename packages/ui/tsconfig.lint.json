@@ -6,7 +6,10 @@
   "include": [
     "src",
     "turbo",
-    "tailwind.config.js"
+    "*.config.mjs",
+    "postcss.config.mjs",
+    "tailwind.config.mjs",
+    "eslint.config.mjs"
   ],
   "exclude": [
     "node_modules",

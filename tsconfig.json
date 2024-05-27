@@ -5,6 +5,7 @@
     "noEmit": true
   },
   "include": [
-    "./eslint.config.mjs"
+    "./eslint.config.mjs",
+    "./commitlint.config.js"
   ]
 }

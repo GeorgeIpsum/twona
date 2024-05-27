@@ -11,9 +11,6 @@
   },
   "include": [
     "src",
-    "tailwind.config.js",
-    "eslint.config.mjs",
-    "postcss.config.js"
   ],
   "exclude": [
     "node_modules",

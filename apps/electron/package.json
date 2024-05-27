@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build && electron-builder",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "lint": "eslint . --fix",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -24,8 +24,7 @@
     "vite-plugin-electron": "^0.28.6",
     "vite-plugin-electron-renderer": "^0.14.5",
     "@tilli-pro/eslint-config": "^2.0.2",
-    "@twona/typescript-config": "workspace:*",
-    "@twona/ui": "workspace:*"
+    "@twona/typescript-config": "workspace:*"
   },
   "main": "dist-electron/main.js"
 }
