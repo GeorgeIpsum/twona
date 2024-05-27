@@ -1,4 +1,4 @@
 # twona
 
-> ![NOTE]  
+> [!TIP]  
 > _Pronounced **too**·nuh_
