@@ -9,7 +9,11 @@
     "lint": "echo 'Add lint script here'"
   },
   "devDependencies": {
-    "@twona/typescript-config": "workspace:*"
+    "@tilli-pro/eslint-config": "^2.0.2",
+    "@twona/typescript-config": "workspace:*",
+    "tsup": "^8.0.2",
+    "tsx": "^4.11.0",
+    "typescript": "^5.4.5"
   },
   "dependencies": {
     "@auth/express": "^0.5.5",
@@ -18,6 +22,7 @@
     "cors": "^2.8.5",
     "express": "^4.19.2",
     "helmet": "^7.1.0",
+    "lru-cache": "^10.2.2",
     "pino": "^9.1.0",
     "pino-http": "^10.1.0",
     "pino-noir": "^2.2.1",

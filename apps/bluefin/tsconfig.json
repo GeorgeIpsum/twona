@@ -1,0 +1,30 @@
+{
+  "extends": "@twona/typescript-config/node.json",
+  "compilerOptions": {
+    "rootDir": ".",
+    "baseUrl": "./src",
+    "paths": {
+      "~/*": [
+        "./*"
+      ]
+    },
+    "typeRoots": [
+      "./node_modules/@types",
+      "./types.d.ts",
+      "./express.d.ts"
+    ],
+    "outDir": "./dist" /* Specify an output folder for all emitted files. */,
+    /* Interop Constraints */
+  },
+  "include": [
+    "src",
+    "*.d.ts",
+    "*.d.ts",
+    "*.config.mjs"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "turbo"
+  ],
+}
