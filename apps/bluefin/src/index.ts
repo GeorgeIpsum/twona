@@ -1,1 +1,4 @@
-export const b = "2" as Bluefin.Fin["a"];
+import bluefin from "./app";
+
+console.log("LALLALALALA");
+bluefin().catch(console.error);
