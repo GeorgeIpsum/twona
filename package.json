@@ -17,6 +17,7 @@
     "@tilli-pro/eslint-config": "^2.0.2",
     "@twona/typescript-config": "workspace:*",
     "commitlint": "^19.3.0",
+    "eslint": "^9.4.0",
     "husky": "^9.0.11",
     "prettier": "^3.2.5",
     "turbo": "latest"

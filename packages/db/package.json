@@ -7,11 +7,7 @@
     "generate": "prisma generate",
     "migrate": "prisma migrate dev",
     "migrate:dev": "prisma migrate dev",
-    "seed": "prisma db seed",
-    "dev": "echo 'Add dev script here'",
-    "build": "echo 'Add build script here'",
-    "test": "echo 'Add test script here'",
-    "lint": "echo 'Add lint script here'"
+    "seed": "prisma db seed"
   },
   "devDependencies": {
     "@tilli-pro/eslint-config": "^2.0.2",
