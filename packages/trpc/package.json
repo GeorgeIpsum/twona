@@ -1,5 +1,5 @@
 {
-  "name": "trpc",
+  "name": "@twona/trpc",
   "version": "0.0.0",
   "private": true,
   "main": "./src/index.ts",
@@ -13,7 +13,7 @@
   "devDependencies": {
     "@tilli-pro/eslint-config": "^2.0.2",
     "@twona/typescript-config": "workspace:*",
-    "db": "workspace:*"
+    "@twona/db": "workspace:*"
   },
   "dependencies": {
     "@trpc/server": "^10.45.2",

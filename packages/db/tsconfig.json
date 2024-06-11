@@ -2,10 +2,10 @@
   "extends": "@twona/typescript-config/node.json",
   "compilerOptions": {
     "rootDir": ".",
-    "baseUrl": "./src",
+    "baseUrl": "./",
     "paths": {
       "~/*": [
-        "./*"
+        "./src/*"
       ]
     },
     "outDir": "./dist" /* Specify an output folder for all emitted files. */,
@@ -13,6 +13,8 @@
   },
   "include": [
     "src",
+    "prisma/seed",
+    "prisma/generated",
     "*.d.ts",
     "*.d.ts",
     "*.config.mjs"

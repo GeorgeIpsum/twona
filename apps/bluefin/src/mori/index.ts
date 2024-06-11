@@ -1,4 +1,5 @@
 import env from "./env";
-import log from "./log";
+import log, { bold, italicize, stdWarn } from "./log";
+import { timer } from "./timer";
 
-export { env, log };
+export { env, log, stdWarn, bold, italicize, timer };

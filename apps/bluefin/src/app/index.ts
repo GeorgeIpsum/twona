@@ -1,19 +1,23 @@
 import express from "express";
 import { type Server, createServer } from "node:http";
 
-import { env, log } from "~/mori";
+import { env, log, stdWarn } from "~/mori";
 
 let server: Server;
 
 async function main(listen?: () => void) {
   try {
+    stdWarn({
+      header: `Bluefin v${env.version}${env.prod ? "" : ` (${env.env})`}`,
+      text: [`${env.protocol}://${env.host}:${env.port}`, "Starting..."],
+    });
     const app = express();
 
     server = createServer(app);
     return server.listen(env.port, listen);
   } catch (e) {
-    console.log("??????????????");
-    return errorHandler(e as Error);
+    errorHandler(e as Error);
+    return null;
   }
 }
 

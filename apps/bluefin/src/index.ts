@@ -1,4 +1,10 @@
 import bluefin from "./app";
+import { timer } from "./mori";
 
-console.log("LALLALALALA");
-bluefin().catch(console.error);
+(async () => {
+  const time = timer();
+  const server = await bluefin();
+  if (server) {
+    server.once("listening", () => timer(time, "Server started"));
+  }
+})().catch(console.error);
