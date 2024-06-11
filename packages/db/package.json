@@ -1,5 +1,5 @@
 {
-  "name": "@twona/db",
+  "name": "db",
   "version": "1.0.0",
   "main": "./src/index.ts",
   "types": "./src/index.ts",
@@ -14,6 +14,7 @@
     "lint": "echo 'Add lint script here'"
   },
   "devDependencies": {
+    "@tilli-pro/eslint-config": "^2.0.2",
     "@twona/typescript-config": "workspace:*",
     "prisma": "^5.15.0",
     "tsx": "^4.11.0",

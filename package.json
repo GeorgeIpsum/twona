@@ -1,13 +1,14 @@
 {
   "name": "twona",
   "namespace": "@twona",
-  "packageManager": "pnpm@8.9.0",
+  "packageManager": "pnpm@9.1.0",
   "private": true,
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
     "prepare": "husky",
+    "clean": "rm -rf **/node_modules **/.turbo .turbo **/.next dist **/dist **/pnpm-lock.yaml && pnpm i",
     "commitlint": "commitlint --edit"
   },
   "devDependencies": {
