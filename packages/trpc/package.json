@@ -12,8 +12,7 @@
   },
   "devDependencies": {
     "@tilli-pro/eslint-config": "^2.0.2",
-    "@twona/typescript-config": "workspace:*",
-    "@twona/db": "workspace:*"
+    "@twona/typescript-config": "workspace:*"
   },
   "dependencies": {
     "@trpc/server": "^10.45.2",

@@ -30,7 +30,7 @@ importers:
         specifier: ^3.2.5
         version: 3.3.1
       turbo:
-        specifier: latest
+        specifier: ^2.0.3
         version: 2.0.3
 
   apps/bluefin:

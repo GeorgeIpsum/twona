@@ -2,10 +2,13 @@
   "extends": "@twona/typescript-config/base.json",
   "compilerOptions": {
     "allowJs": true,
-    "noEmit": true
+    "noEmit": true,
+    "esModuleInterop": true,
+    "jsx": "react"
   },
   "include": [
     "./eslint.config.mjs",
-    "./commitlint.config.js"
+    "./commitlint.config.js",
+    "packages/**/*"
   ]
 }
