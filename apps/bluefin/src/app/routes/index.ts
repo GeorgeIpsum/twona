@@ -1,3 +1,12 @@
-const routes = [];
+import { type Express } from "express";
 
-export default routes;
+import auth from "./auth/route";
+import trpc from "./trpc/route";
+
+export const routes = [auth.router, trpc.router];
+
+export const setup = (app: Express) => {
+  routes.forEach((router) => {
+    app.use(router);
+  });
+};

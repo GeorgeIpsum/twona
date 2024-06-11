@@ -7,6 +7,8 @@ import noir from "pino-noir";
 
 import env from "./env";
 
+const TUI_ENABLED = !!process.env.TURBO_HASH;
+
 interface StdWarnOpts {
   wordBoundary?: string;
   newLine?: boolean;
@@ -88,7 +90,8 @@ export function stdWarn(
 ) {
   const stdOutWidth =
     parseInt(process.env.COLUMNS ?? `${process.stdout.columns}`, 10) -
-    margin * 2;
+    margin * 2 -
+    (TUI_ENABLED ? 18 : 0);
   const rowLength = stdOutWidth - padding * 2;
 
   const standardText: StdWarnText =

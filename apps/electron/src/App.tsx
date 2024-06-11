@@ -1,11 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import "./App.css";
 import reactLogo from "./assets/react.svg";
+import api from "./services/trpc/client";
 import viteLogo from "/electron-vite.animate.svg";
 
 function App() {
   const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    api.b.c.query().then((data) => {
+      console.log("query success");
+      console.log("data", data);
+    });
+  }, []);
 
   return (
     <>

@@ -2,7 +2,7 @@
   "extends": "@twona/typescript-config/node.json",
   "compilerOptions": {
     "rootDir": ".",
-    "baseUrl": "./",
+    "baseUrl": ".",
     "paths": {
       "~/*": [
         "./src/*"

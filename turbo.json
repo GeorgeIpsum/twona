@@ -38,15 +38,19 @@
       "persistent": false,
       "env": ["DATABASE_URL"],
       "interactive": true,
-      "dependsOn": ["db#generate"]
+      "dependsOn": ["^db#generate"]
     },
     "dev": {
-      "cache": false,
-      "persistent": true,
-      "dependsOn": ["db#migrate"]
+      "cache": true
     },
     "bluefin#dev": {
-      "dependsOn": ["db#migrate"]
+      "cache": true,
+      "persistent": true,
+      "dependsOn": ["^db#migrate"]
+    },
+    "electron#dev": {
+      "cache": false,
+      "persistent": true
     }
   }
 }

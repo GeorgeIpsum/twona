@@ -7,10 +7,13 @@
     "dev": "vite",
     "build": "tsc && vite build && electron-builder",
     "lint": "eslint . --fix",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "postinstall": "node node_modules/electron/install.js && electron-builder install-app-deps"
   },
   "dependencies": {
     "@headlessui/react": "^2.0.4",
+    "@trpc/client": "^10.45.2",
+    "dotenv": "^16.4.5",
     "electron-better-ipc": "^2.0.1",
     "electron-context-menu": "^4.0.0",
     "electron-debug": "^4.0.0",
@@ -23,6 +26,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "spotify-web-api-node": "^5.0.2",
+    "trpc": "workspace:*",
     "ui": "workspace:*"
   },
   "devDependencies": {

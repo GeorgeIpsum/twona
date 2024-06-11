@@ -1,13 +1,18 @@
 import { initTRPC } from "@trpc/server";
+import { type CreateExpressContextOptions } from "@trpc/server/adapters/express";
 import { OpenApiMeta } from "trpc-openapi";
 import { ZodError } from "zod";
 
 export const createContext = async () => {
   return {};
 };
+type GenericContext = typeof createContext;
+type ExpressContext = Awaited<
+  ReturnType<(ctx: CreateExpressContextOptions) => Promise<{}>>
+>;
 
-const t = initTRPC
-  .context<typeof createContext>()
+export const t = initTRPC
+  .context<GenericContext | ExpressContext>()
   .meta<OpenApiMeta>()
   .create({
     errorFormatter: ({ shape, error }) => {
