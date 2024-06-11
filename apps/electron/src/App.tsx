@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
 import "./App.css";
+import api from "./api";
 import reactLogo from "./assets/react.svg";
-import api from "./services/trpc/client";
 import viteLogo from "/electron-vite.animate.svg";
 
 function App() {
