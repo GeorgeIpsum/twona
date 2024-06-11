@@ -15,7 +15,7 @@ async function main(listen?: () => void) {
       text: [
         `${env.protocol}://${env.host}:${env.port}`,
         "REGISTERED ROUTES:",
-        ...routes.map((r) => r.stack.map((s) => `🚏 ${s.regexp}`).join("\n")),
+        ...routes.map((r) => r.stack.map((s) => `🛜 ${s.regexp}`).join("\n")),
       ],
     });
     const app = express();

@@ -6,5 +6,18 @@
     {
       "pattern": "./packages/*/"
     }
-  ]
+  ],
+  "tailwindCSS.experimental.classRegex": [
+    [
+      "cva\\(([^)]*)\\)",
+      "[\"'`]([^\"'`]*).*?[\"'`]",
+      "cx\\(.*\\)",
+      "cw\\(.*\\)"
+    ]
+  ],
+  "tailwindCSS.classAttributes": [".*ClassName*"],
+  "eslint.format.enable": true,
+  "files.associations": {
+    "*.css": "tailwindcss"
+  }
 }

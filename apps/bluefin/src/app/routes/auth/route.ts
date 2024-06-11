@@ -1,7 +1,7 @@
 import { ExpressAuth } from "@auth/express";
 import { type Express, Router } from "express";
 
-import { authConfig } from "~/app/services/auth/index.mjs";
+import { authConfig } from "~/app/services/auth";
 
 const setup = (app: Express) => {
   app.set("trust proxy", true);

@@ -219,12 +219,21 @@ importers:
       '@vitejs/plugin-react':
         specifier: ^4.2.1
         version: 4.3.1(vite@5.2.13(@types/node@20.14.2))
+      autoprefixer:
+        specifier: ^10.4.19
+        version: 10.4.19(postcss@8.4.38)
       electron:
         specifier: ^30.0.1
         version: 30.1.0
       electron-builder:
         specifier: ^24.13.3
         version: 24.13.3(electron-builder-squirrel-windows@24.13.3(dmg-builder@24.13.3))
+      postcss:
+        specifier: ^8.4.38
+        version: 8.4.38
+      tailwindcss:
+        specifier: ^3.4.3
+        version: 3.4.4(ts-node@10.9.2(@types/node@20.14.2)(typescript@5.4.5))
       typescript:
         specifier: ^5.2.2
         version: 5.4.5
@@ -241,7 +250,7 @@ importers:
   packages/db:
     dependencies:
       '@prisma/client':
-        specifier: ^5.15.0
+        specifier: latest
         version: 5.15.0(prisma@5.15.0)
       prisma-extension-caching:
         specifier: ^1.0.9
@@ -257,7 +266,7 @@ importers:
         specifier: workspace:*
         version: link:../typescript-config
       prisma:
-        specifier: ^5.15.0
+        specifier: latest
         version: 5.15.0
       tsx:
         specifier: ^4.11.0
