@@ -4,6 +4,7 @@ declare namespace Bluefin {
   type NextFunction = import("express").NextFunction;
   type Handler = (req: Request, res: Response, next: NextFunction) => void;
   type Express = import("express").Express;
+  type Router = import("express").Router;
   type Locals = import("express").Locals;
   type ExpressSetup = (app: Express) => void;
 
@@ -25,6 +26,6 @@ declare namespace Bluefin {
 
   interface Sakai {
     setup?: ExpressSetup;
-    routes: Record<Route, Handler>;
+    router: Router;
   }
 }

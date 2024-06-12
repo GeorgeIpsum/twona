@@ -1,0 +1,24 @@
+diff --git a/package.json b/package.json
+index cdd2a3d3135df7a85516b472946cb69bcc713b11..53013386e86b0705dc042a96824692b86bfd661e 100644
+--- a/package.json
++++ b/package.json
+@@ -13,7 +13,8 @@
+   "exports": {
+     ".": {
+       "types": "./index.d.ts",
+-      "import": "./index.js"
++      "import": "./index.js",
++      "default": "./index.js"
+     },
+     "./providers": {
+       "types": "./providers/index.d.ts"
+@@ -23,7 +24,8 @@
+     },
+     "./providers/*": {
+       "types": "./providers/*.d.ts",
+-      "import": "./providers/*.js"
++      "import": "./providers/*.js",
++      "default": "./providers/*.js"
+     },
+     "./package.json": "./package.json"
+   },

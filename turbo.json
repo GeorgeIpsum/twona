@@ -1,7 +1,8 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "globalDependencies": [
-    "**/.env.*local"
+    "**/.env.*local",
+    ".env"
   ],
   "globalEnv": [
     "DATABASE_URL",
@@ -26,16 +27,30 @@
         "^lint"
       ]
     },
-    "migrate": {
+    "db#generate": {
       "cache": true,
-      "persistent": false
+      "persistent": false,
+      "env": ["DATABASE_URL"],
+      "interactive": false
+    },
+    "db#migrate": {
+      "cache": false,
+      "persistent": false,
+      "env": ["DATABASE_URL"],
+      "interactive": true,
+      "dependsOn": ["^db#generate"]
     },
     "dev": {
-      "cache": false,
+      "cache": true
+    },
+    "bluefin#dev": {
+      "cache": true,
       "persistent": true,
-      "dependsOn": [
-        "db#migrate"
-      ]
+      "dependsOn": ["^db#migrate"]
+    },
+    "electron#dev": {
+      "cache": false,
+      "persistent": true
     }
   }
 }

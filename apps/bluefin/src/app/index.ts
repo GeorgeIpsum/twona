@@ -1,7 +1,10 @@
+import cors from "cors";
 import express from "express";
 import { type Server, createServer } from "node:http";
 
 import { env, log, stdWarn } from "~/mori";
+
+import { routes, setup } from "./routes";
 
 let server: Server;
 
@@ -9,9 +12,16 @@ async function main(listen?: () => void) {
   try {
     stdWarn({
       header: `Bluefin v${env.version}${env.prod ? "" : ` (${env.env})`}`,
-      text: [`${env.protocol}://${env.host}:${env.port}`, "Starting..."],
+      text: [
+        `${env.protocol}://${env.host}:${env.port}`,
+        "REGISTERED ROUTES:",
+        ...routes.map((r) => r.stack.map((s) => `🛜 ${s.regexp}`).join("\n")),
+      ],
     });
     const app = express();
+    app.use(cors());
+    app.use(express.json());
+    setup(app);
 
     server = createServer(app);
     return server.listen(env.port, listen);

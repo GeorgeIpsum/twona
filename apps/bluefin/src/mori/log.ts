@@ -7,6 +7,8 @@ import noir from "pino-noir";
 
 import env from "./env";
 
+const TUI_ENABLED = !!process.env.TURBO_HASH;
+
 interface StdWarnOpts {
   wordBoundary?: string;
   newLine?: boolean;
@@ -30,10 +32,12 @@ const DEFAULT_STD_WARN_OPTS: StdWarnOpts = {
 };
 
 const boldCode = "\x1b[1m";
+const boldBriteCode = "\x1b[1;97;104m";
 const magentaCode = "\x1b[45m";
 const italicsCode = "\x1b[3m";
 const resetCode = "\x1b[0m";
 
+// TODO: make this work
 export const bold = (text: string, reset = true) =>
   `${boldCode}${text}${reset ? resetCode : ""}`;
 export const italicize = (text: string, reset = true) =>
@@ -88,7 +92,8 @@ export function stdWarn(
 ) {
   const stdOutWidth =
     parseInt(process.env.COLUMNS ?? `${process.stdout.columns}`, 10) -
-    margin * 2;
+    margin * 2 -
+    (TUI_ENABLED ? 18 : 0);
   const rowLength = stdOutWidth - padding * 2;
 
   const standardText: StdWarnText =
@@ -115,9 +120,9 @@ export function stdWarn(
   }
 
   if (texts.length > 1) {
-    texts.forEach((t, i) => {
+    texts.forEach((t) => {
       warnings.push(...buildStdWarnLines(t));
-      if (i < texts.length - 1) warnings.push("");
+      // if (i < texts.length - 1) warnings.push("");
     });
   } else if (texts.length === 1) {
     warnings.push(...buildLines(texts[0]!, rowLength, wordBoundary));
@@ -132,7 +137,7 @@ export function stdWarn(
         magentaCode,
         margin,
         padding,
-        header && i <= numHeaderLines + 1 ? boldCode : "",
+        header && i <= numHeaderLines ? boldBriteCode : boldCode,
       ),
     )
     .join("\n");

@@ -1,8 +1,12 @@
-import * as trpc from "@trpc/server";
+import { createContext, procedure, router } from "./trpc";
 
-import { router } from "./trpc";
-
-export const appRouter = router({});
+export const appRouter = router({
+  b: router({
+    c: procedure.query(async () => {
+      return true;
+    }),
+  }),
+});
 
 export type BluefinTRPC = typeof appRouter;
-export default trpc;
+export { createContext };
