@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "tsx --watch src/index.ts"
+    "dev": "tsx --watch src/index.ts",
+    "build": "tsc"
   },
   "devDependencies": {
     "@tilli-pro/eslint-config": "^2.0.2",
@@ -21,7 +22,6 @@
   "dependencies": {
     "@auth/express": "^0.5.5",
     "@auth/prisma-adapter": "^2.2.0",
-    "@prisma/client": "^5.14.0",
     "@trpc/server": "^10.45.2",
     "@wesleytodd/openapi": "^1.0.0",
     "compression": "^1.7.4",

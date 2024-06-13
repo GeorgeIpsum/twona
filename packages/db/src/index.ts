@@ -1,6 +1,5 @@
-import { PrismaClient } from "@prisma/client";
-
 import * as validators from "../prisma/generated/zod";
+import { PrismaClient } from "../prisma/generated/client";
 
 const DB = PrismaClient;
 
