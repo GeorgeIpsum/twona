@@ -13,8 +13,7 @@
   },
   "include": [
     "src",
-    "prisma/seed",
-    "prisma/generated",
+    "prisma",
     "*.d.ts",
     "*.d.ts",
     "*.config.mjs"

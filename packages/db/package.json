@@ -1,13 +1,27 @@
 {
   "name": "db",
   "version": "1.0.0",
-  "main": "./src/index.ts",
-  "types": "./src/index.ts",
+  "exports": {
+    "./postgres": {
+      "import": "./src/postgres.ts",
+      "default": "./src/postgres.ts",
+      "types": "./src/postgres.ts"
+    },
+    "./sqlite": {
+      "import": "./src/sqlite.ts",
+      "default": "./src/sqlite.ts",
+      "types": "./src/sqlite.ts"
+    }
+  },
   "scripts": {
-    "generate": "prisma generate",
-    "migrate": "prisma migrate dev",
-    "migrate:dev": "prisma migrate dev",
-    "seed": "prisma db seed"
+    "gen": "pnpm run /^generate:*/",
+    "generate:pg": "prisma generate",
+    "generate:sl": "prisma generate --schema prisma/schema/sqlite",
+    "mig": "pnpm run /^migrate:*/",
+    "migrate:pg": "prisma migrate dev",
+    "migrate:sl": "prisma db push --schema prisma/schema/sqlite",
+    "seed": "prisma db seed",
+    "postinstall": "pnpm generate"
   },
   "devDependencies": {
     "@tilli-pro/eslint-config": "^2.0.2",
@@ -18,11 +32,12 @@
   },
   "dependencies": {
     "@prisma/client": "latest",
+    "@prisma/instrumentation": "latest",
     "prisma-extension-caching": "^1.0.9",
     "zod": "^3.23.8"
   },
   "prisma": {
-    "schema": "prisma/schema.prisma",
+    "schema": "prisma/schema/postgres",
     "seed": "tsx prisma/seed"
   }
 }

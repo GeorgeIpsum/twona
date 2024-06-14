@@ -3,6 +3,7 @@ import express from "express";
 import { type Server, createServer } from "node:http";
 
 import { env, log, stdWarn } from "~/mori";
+import { attachLogger } from "~/mori/log";
 
 import { routes, setup } from "./routes";
 
@@ -15,12 +16,16 @@ async function main(listen?: () => void) {
       text: [
         `${env.protocol}://${env.host}:${env.port}`,
         "REGISTERED ROUTES:",
-        ...routes.map((r) => r.stack.map((s) => `🛜 ${s.regexp}`).join("\n")),
+        ...routes.map((r) =>
+          r.router.stack.map((s) => `🛜 ${s.regexp}`).join("\n"),
+        ),
       ],
     });
     const app = express();
     app.use(cors());
     app.use(express.json());
+    app.disable("x-powered-by");
+    app.use(attachLogger);
     setup(app);
 
     server = createServer(app);

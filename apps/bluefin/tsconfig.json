@@ -2,14 +2,18 @@
   "extends": "@twona/typescript-config/node.json",
   "compilerOptions": {
     "baseUrl": ".",
-    "moduleResolution": "Node",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "declaration": false,
+    "isolatedModules": false,
+    "declarationMap": false,
+    "esModuleInterop": true,
+    "outDir": "./dist",
     "paths": {
       "~/*": [
         "./src/*"
       ]
-    },
-    "outDir": "./dist" /* Specify an output folder for all emitted files. */,
-    /* Interop Constraints */
+    }
   },
   "include": [
     "src",

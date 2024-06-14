@@ -8,6 +8,10 @@ import noir from "pino-noir";
 import env from "./env";
 
 const TUI_ENABLED = !!process.env.TURBO_HASH;
+const calcStdOutWidth = (margin: number) =>
+  parseInt(process.env.COLUMNS ?? `${process.stdout.columns}`, 10) -
+  margin * 2 -
+  (TUI_ENABLED ? 24 : 0);
 
 interface StdWarnOpts {
   wordBoundary?: string;
@@ -90,10 +94,7 @@ export function stdWarn(
     padding = DEFAULT_BOX_PADDING,
   }: StdWarnOpts = DEFAULT_STD_WARN_OPTS,
 ) {
-  const stdOutWidth =
-    parseInt(process.env.COLUMNS ?? `${process.stdout.columns}`, 10) -
-    margin * 2 -
-    (TUI_ENABLED ? 18 : 0);
+  const stdOutWidth = calcStdOutWidth(margin);
   const rowLength = stdOutWidth - padding * 2;
 
   const standardText: StdWarnText =
@@ -183,8 +184,32 @@ const log = pino(
 
 export const attachLogger = httpLogger({
   logger: log,
-  genReqId: () => nanoid(),
+  genReqId: (req, res) => {
+    const existing = req.headers["x-request-id"] ?? req.id;
+    if (existing) return existing;
+    if (req.url && req.url.length > 0) {
+      const parsedUrl = req.url?.split("?")[0]?.replace("/", "");
+      const id = nanoid(8);
+      res.setHeader("x-request-id", id);
+      return `${parsedUrl}|${req.method ?? "NO_METHOD"}|${id}`;
+    }
+    const id = nanoid();
+    res.setHeader("x-request-id", id);
+    return id;
+  },
   name: "http",
+  serializers: {
+    req: (req) => {
+      if (req.url === "/health") {
+        return { id: req.id, remoteAddress: req.ip ?? req.remoteAddress };
+      }
+      return req;
+    },
+    res: (res) => {
+      return res;
+    },
+    ...redactedKeys,
+  },
 });
 
 export default log;

@@ -18,5 +18,6 @@ router.use(
 );
 
 export default {
+  setup: undefined,
   router,
 } satisfies Bluefin.Sakai;
