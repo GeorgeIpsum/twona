@@ -27,18 +27,30 @@
         "^lint"
       ]
     },
-    "db#gen": {
+    "db#generate": {
       "cache": true,
       "persistent": false,
       "env": ["PG_DATABASE_URL", "SL_DATABASE_URL"],
       "interactive": false
     },
-    "db#mig": {
+    "db#migrate": {
       "cache": false,
       "persistent": false,
       "env": ["PG_DATABASE_URL", "SL_DATABASE_URL"],
       "interactive": true,
-      "dependsOn": ["^db#gen"]
+      "dependsOn": ["^db#generate"]
+    },
+    "db#generate:sl": {
+      "cache": false,
+      "persistent": false,
+      "env": ["SL_DATABASE_URL"]
+    },
+    "db#migrate:sl": {
+      "cache": false,
+      "persistent": false,
+      "interactive": true,
+      "env": ["SL_DATABASE_URL"],
+      "dependsOn": ["^db#generate:sl"]
     },
     "dev": {
       "cache": true
@@ -46,12 +58,12 @@
     "bluefin#dev": {
       "cache": true,
       "persistent": true,
-      "dependsOn": ["^db#mig"]
+      "dependsOn": ["^db#migrate"]
     },
     "electron#dev": {
       "cache": false,
       "persistent": true,
-      "dependsOn": ["electron#serverup"]
+      "dependsOn": ["electron#serverup", "db#migrate:sl"]
     },
     "electron#serverup": {
       "cache": false,

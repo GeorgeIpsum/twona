@@ -14,10 +14,10 @@
     }
   },
   "scripts": {
-    "gen": "pnpm run /^generate:*/",
+    "generate": "pnpm run /^generate:.*/",
     "generate:pg": "prisma generate",
     "generate:sl": "prisma generate --schema prisma/schema/sqlite",
-    "mig": "pnpm run /^migrate:*/",
+    "migrate": "pnpm run /^migrate:.*/",
     "migrate:pg": "prisma migrate dev",
     "migrate:sl": "prisma db push --schema prisma/schema/sqlite",
     "seed": "prisma db seed",
