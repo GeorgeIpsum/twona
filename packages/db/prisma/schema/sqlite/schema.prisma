@@ -1,0 +1,15 @@
+generator client {
+  provider        = "prisma-client-js"
+  output          = "../generated/sqlite/client"
+  previewFeatures = ["prismaSchemaFolder", "fullTextIndex", "fullTextSearch", "postgresqlExtensions", "relationJoins", "nativeDistinct"]
+}
+
+generator zod {
+  provider = "pnpm exec zod-prisma-types"
+  output   = "../generated/sqlite/zod"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("SL_DATABASE_URL")
+}

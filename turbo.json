@@ -30,15 +30,27 @@
     "db#generate": {
       "cache": true,
       "persistent": false,
-      "env": ["DATABASE_URL"],
+      "env": ["PG_DATABASE_URL", "SL_DATABASE_URL"],
       "interactive": false
     },
     "db#migrate": {
       "cache": false,
       "persistent": false,
-      "env": ["DATABASE_URL"],
+      "env": ["PG_DATABASE_URL", "SL_DATABASE_URL"],
       "interactive": true,
       "dependsOn": ["^db#generate"]
+    },
+    "db#generate:sl": {
+      "cache": false,
+      "persistent": false,
+      "env": ["SL_DATABASE_URL"]
+    },
+    "db#migrate:sl": {
+      "cache": false,
+      "persistent": false,
+      "interactive": true,
+      "env": ["SL_DATABASE_URL"],
+      "dependsOn": ["^db#generate:sl"]
     },
     "dev": {
       "cache": true
@@ -50,7 +62,12 @@
     },
     "electron#dev": {
       "cache": false,
-      "persistent": true
+      "persistent": true,
+      "dependsOn": ["electron#serverup", "db#migrate:sl"]
+    },
+    "electron#serverup": {
+      "cache": false,
+      "persistent": false
     }
   }
 }

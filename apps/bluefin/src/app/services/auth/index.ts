@@ -14,5 +14,5 @@ type AuthConfig = Parameters<typeof ExpressAuth>[0];
 
 export const authConfig: AuthConfig = {
   providers: [battlenet, discord, faceit, instagram, spotify, twitch, twitter],
-  adapter: PrismaAdapter(db),
+  adapter: PrismaAdapter(db as Parameters<typeof PrismaAdapter>[0]),
 };

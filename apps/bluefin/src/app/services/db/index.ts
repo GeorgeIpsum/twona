@@ -1,5 +1,5 @@
-import DB from "db";
+import Postgres from "db/postgres";
 
-const db = new DB();
+const db = new Postgres();
 
 export default db;
