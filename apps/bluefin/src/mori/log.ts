@@ -11,7 +11,7 @@ const TUI_ENABLED = !!process.env.TURBO_HASH;
 const calcStdOutWidth = (margin: number) =>
   parseInt(process.env.COLUMNS ?? `${process.stdout.columns}`, 10) -
   margin * 2 -
-  (TUI_ENABLED ? 24 : 0);
+  (TUI_ENABLED ? 32 : 0);
 
 interface StdWarnOpts {
   wordBoundary?: string;

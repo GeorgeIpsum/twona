@@ -1,7 +1,11 @@
 import { BrowserWindow, app } from "electron";
+import windowStateKeeper, { type State } from "electron-window-state";
 import { createRequire } from "node:module";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+
+import store from "./store";
+import { getNativeTheme } from "./theme";
 
 const require = createRequire(import.meta.url);
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -17,6 +21,9 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 // │
 process.env.APP_ROOT = path.join(__dirname, "..");
 
+const MIN_WIDTH = 1280;
+const MIN_HEIGHT = 720;
+
 // 🚧 Use ['ENV_NAME'] avoid vite:define plugin - Vite@2.x
 export const VITE_DEV_SERVER_URL = process.env["VITE_DEV_SERVER_URL"];
 export const MAIN_DIST = path.join(process.env.APP_ROOT, "dist-electron");
@@ -27,13 +34,31 @@ process.env.VITE_PUBLIC = VITE_DEV_SERVER_URL
   : RENDERER_DIST;
 
 let win: BrowserWindow | null;
+let mainWindowState: State;
 
 function createWindow() {
+  const initialTheme = store.get("theme");
+  const systemTheme = getNativeTheme();
+  console.log(initialTheme, systemTheme);
+
+  mainWindowState = windowStateKeeper({
+    defaultWidth: MIN_WIDTH,
+    defaultHeight: MIN_HEIGHT,
+  });
+
   win = new BrowserWindow({
     icon: path.join(process.env.VITE_PUBLIC!, "electron-vite.svg"),
     webPreferences: {
       preload: path.join(__dirname, "preload.mjs"),
     },
+    darkTheme: initialTheme === "dark",
+    x: mainWindowState.x,
+    y: mainWindowState.y,
+    minWidth: MIN_WIDTH,
+    minHeight: MIN_HEIGHT,
+    width: mainWindowState.width,
+    height: mainWindowState.height,
+    frame: false,
   });
 
   // Test active push message to Renderer-process.
@@ -65,6 +90,10 @@ app.on("activate", () => {
   if (BrowserWindow.getAllWindows().length === 0) {
     createWindow();
   }
+});
+
+app.on("ready", () => {
+  mainWindowState?.manage(win!);
 });
 
 app.whenReady().then(createWindow);

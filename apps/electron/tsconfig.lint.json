@@ -31,7 +31,10 @@
   "include": [
     "src",
     "electron",
+    "scripts",
     "*.config.mjs",
-    "vite.config.ts"
+    "vite.config.ts",
+    "tailwind.config.js",
+    "postcss.config.js"
   ],
 }

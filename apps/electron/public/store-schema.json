@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "properties": {
+    "theme": {
+      "$ref": "#/definitions/Theme"
+    }
+  },
+  "definitions": {
+    "Theme": {
+      "enum": [
+        "dark",
+        "light",
+        "system"
+      ],
+      "type": "string"
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

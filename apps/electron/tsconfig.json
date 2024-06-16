@@ -30,7 +30,8 @@
   },
   "include": [
     "src",
-    "electron"
+    "electron",
+    "scripts"
   ],
   "references": [
     {

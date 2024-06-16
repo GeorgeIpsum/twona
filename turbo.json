@@ -63,9 +63,9 @@
     "electron#dev": {
       "cache": false,
       "persistent": true,
-      "dependsOn": ["electron#serverup", "db#migrate:sl"]
+      "dependsOn": ["electron#server-up", "db#migrate:sl"]
     },
-    "electron#serverup": {
+    "electron#server-up": {
       "cache": false,
       "persistent": false
     }
