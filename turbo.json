@@ -37,8 +37,7 @@
       "cache": false,
       "persistent": false,
       "env": ["PG_DATABASE_URL", "SL_DATABASE_URL"],
-      "interactive": true,
-      "dependsOn": ["^db#generate"]
+      "interactive": true
     },
     "db#generate:sl": {
       "cache": false,
@@ -49,8 +48,7 @@
       "cache": false,
       "persistent": false,
       "interactive": true,
-      "env": ["SL_DATABASE_URL"],
-      "dependsOn": ["^db#generate:sl"]
+      "env": ["SL_DATABASE_URL"]
     },
     "dev": {
       "cache": true

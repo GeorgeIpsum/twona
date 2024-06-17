@@ -8,5 +8,6 @@ export default [
     languageOptions: {
       parserOptions: { project },
     },
+    ignoreFiles: ["dist"],
   },
 ];

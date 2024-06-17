@@ -10,17 +10,19 @@
     },
     "outDir": "./dist" /* Specify an output folder for all emitted files. */,
     /* Interop Constraints */
+    "allowJs": true,
+    "checkJs": false
   },
   "include": [
     "src",
     "prisma",
     "*.d.ts",
     "*.d.ts",
-    "*.config.mjs"
-  ],
+   ],
   "exclude": [
+    "*.config.mjs",
     "node_modules",
     "dist",
     "turbo"
-  ],
+  ]
 }

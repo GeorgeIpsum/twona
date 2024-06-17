@@ -1,5 +1,5 @@
-import Postgres from "db/postgres";
+import { PrismaClient } from "db/postgres";
 
-const db = new Postgres();
+const db = new PrismaClient();
 
 export default db;

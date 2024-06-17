@@ -4,7 +4,7 @@ import { createRequire } from "node:module";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-import store from "./store";
+import store, { sqlite } from "./store";
 import { getNativeTheme } from "./theme";
 
 const require = createRequire(import.meta.url);
@@ -40,6 +40,7 @@ function createWindow() {
   const initialTheme = store.get("theme");
   const systemTheme = getNativeTheme();
   console.log(initialTheme, systemTheme);
+  sqlite.integration.findMany().then(console.log);
 
   mainWindowState = windowStateKeeper({
     defaultWidth: MIN_WIDTH,

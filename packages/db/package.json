@@ -1,16 +1,24 @@
 {
   "name": "db",
   "version": "1.0.0",
+  "type": "module",
   "exports": {
     "./postgres": {
-      "import": "./src/postgres.ts",
-      "default": "./src/postgres.ts",
-      "types": "./src/postgres.ts"
+      "import": "./prisma/generated/postgres/client/default.js",
+      "require": "./prisma/generated/postgres/client/index.js",
+      "default": "./prisma/generated/postgres/client/default.js",
+      "types": "./prisma/generated/postgres/client/default.d.ts"
     },
     "./sqlite": {
-      "import": "./src/sqlite.ts",
-      "default": "./src/sqlite.ts",
-      "types": "./src/sqlite.ts"
+      "import": "./prisma/generated/sqlite/client/default.js",
+      "require": "./prisma/generated/sqlite/client/index.js",
+      "default": "./prisma/generated/sqlite/client/default.js",
+      "types": "./prisma/generated/sqlite/client/default.d.ts"
+    },
+    "./extensions": {
+      "import": "./src/extensions/index.ts",
+      "default": "./src/extensions/index.ts",
+      "types": "./src/extensions/index.ts"
     }
   },
   "scripts": {
@@ -18,10 +26,11 @@
     "generate:pg": "prisma generate",
     "generate:sl": "prisma generate --schema prisma/schema/sqlite",
     "migrate": "pnpm run /^migrate:.*/",
-    "migrate:pg": "prisma migrate dev",
+    "migrate:pg": "prisma db push",
     "migrate:sl": "prisma db push --schema prisma/schema/sqlite",
     "seed": "prisma db seed",
-    "postinstall": "pnpm generate"
+    "postinstall": "pnpm generate",
+    "build": "tsc"
   },
   "devDependencies": {
     "@tilli-pro/eslint-config": "^2.0.2",
