@@ -157,6 +157,15 @@ exports.Prisma.AuthenticatorScalarFieldEnum = {
   transports: 'transports'
 };
 
+exports.Prisma.IntegrationScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  type: 'type',
+  url: 'url',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -165,6 +174,13 @@ exports.Prisma.UserScalarFieldEnum = {
   image: 'image',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
+};
+
+exports.Prisma.WidgetScalarFieldEnum = {
+  id: 'id',
+  slug: 'slug',
+  layout: 'layout',
+  integrationId: 'integrationId'
 };
 
 exports.Prisma.SortOrder = {
@@ -183,7 +199,9 @@ exports.Prisma.ModelName = {
   Session: 'Session',
   VerificationToken: 'VerificationToken',
   Authenticator: 'Authenticator',
-  User: 'User'
+  Integration: 'Integration',
+  User: 'User',
+  Widget: 'Widget'
 };
 
 /**

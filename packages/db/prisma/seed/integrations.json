@@ -1,0 +1,9 @@
+{
+  "name": "integrations",
+  "integrations": [
+    {
+      "name": "spotify",
+      "url": "https://api.spotify.com/v1/me/player/currently-playing"
+    }
+  ]
+}

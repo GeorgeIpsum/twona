@@ -26,8 +26,10 @@
   "devDependencies": {
     "@tilli-pro/eslint-config": "^2.0.2",
     "@twona/typescript-config": "workspace:*",
+    "@types/node": "^20.11.24",
     "prisma": "latest",
     "tsx": "^4.11.0",
+    "typescript": "^5.4.5",
     "zod-prisma-types": "^3.1.8"
   },
   "dependencies": {

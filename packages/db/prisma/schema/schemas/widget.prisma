@@ -1,0 +1,10 @@
+model Widget {
+  id     String @id @default(cuid())
+  slug   String @unique
+  layout String @default("{}") // JSON
+
+  integration   Integration @relation(fields: [integrationId], references: [id])
+  integrationId String
+
+  @@index(slug)
+}

@@ -21,6 +21,7 @@
     "clsx": "^2.1.1",
     "cmdk": "^1.0.0",
     "date-fns": "^3.6.0",
+    "db": "workspace:*",
     "dotenv": "^16.4.5",
     "electron-better-ipc": "^2.0.1",
     "electron-context-menu": "^4.0.0",
@@ -52,6 +53,7 @@
   "devDependencies": {
     "@tilli-pro/eslint-config": "^2.0.2",
     "@twona/typescript-config": "workspace:*",
+    "@types/node": "^20.11.24",
     "@types/react": "^18.2.64",
     "@types/react-dom": "^18.2.21",
     "@vitejs/plugin-react": "^4.2.1",

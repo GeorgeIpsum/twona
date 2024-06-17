@@ -69,6 +69,20 @@ model Authenticator {
   @@id([userId, credentialID])
 }
 
+model Integration {
+  id        String   @id @default(cuid())
+  name      String   @unique
+  type      String   @default("REALTIME") // ENUM THAT IS EITHER "REALTIME" OR "SUMMARY"
+  url       String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  widgets Widget[]
+
+  @@index(name)
+  @@index(type)
+}
+
 model User {
   id            String          @id @default(cuid())
   name          String?
@@ -82,4 +96,15 @@ model User {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model Widget {
+  id     String @id @default(cuid())
+  slug   String @unique
+  layout String @default("{}") // JSON
+
+  integration   Integration @relation(fields: [integrationId], references: [id])
+  integrationId String
+
+  @@index(slug)
 }

@@ -34,10 +34,20 @@ export type VerificationToken = $Result.DefaultSelection<Prisma.$VerificationTok
  */
 export type Authenticator = $Result.DefaultSelection<Prisma.$AuthenticatorPayload>
 /**
+ * Model Integration
+ * 
+ */
+export type Integration = $Result.DefaultSelection<Prisma.$IntegrationPayload>
+/**
  * Model User
  * 
  */
 export type User = $Result.DefaultSelection<Prisma.$UserPayload>
+/**
+ * Model Widget
+ * 
+ */
+export type Widget = $Result.DefaultSelection<Prisma.$WidgetPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -202,6 +212,16 @@ export class PrismaClient<
   get authenticator(): Prisma.AuthenticatorDelegate<ExtArgs>;
 
   /**
+   * `prisma.integration`: Exposes CRUD operations for the **Integration** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Integrations
+    * const integrations = await prisma.integration.findMany()
+    * ```
+    */
+  get integration(): Prisma.IntegrationDelegate<ExtArgs>;
+
+  /**
    * `prisma.user`: Exposes CRUD operations for the **User** model.
     * Example usage:
     * ```ts
@@ -210,6 +230,16 @@ export class PrismaClient<
     * ```
     */
   get user(): Prisma.UserDelegate<ExtArgs>;
+
+  /**
+   * `prisma.widget`: Exposes CRUD operations for the **Widget** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Widgets
+    * const widgets = await prisma.widget.findMany()
+    * ```
+    */
+  get widget(): Prisma.WidgetDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -691,7 +721,9 @@ export namespace Prisma {
     Session: 'Session',
     VerificationToken: 'VerificationToken',
     Authenticator: 'Authenticator',
-    User: 'User'
+    Integration: 'Integration',
+    User: 'User',
+    Widget: 'Widget'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -708,7 +740,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'account' | 'session' | 'verificationToken' | 'authenticator' | 'user'
+      modelProps: 'account' | 'session' | 'verificationToken' | 'authenticator' | 'integration' | 'user' | 'widget'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -992,6 +1024,76 @@ export namespace Prisma {
           }
         }
       }
+      Integration: {
+        payload: Prisma.$IntegrationPayload<ExtArgs>
+        fields: Prisma.IntegrationFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.IntegrationFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$IntegrationPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.IntegrationFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$IntegrationPayload>
+          }
+          findFirst: {
+            args: Prisma.IntegrationFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$IntegrationPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.IntegrationFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$IntegrationPayload>
+          }
+          findMany: {
+            args: Prisma.IntegrationFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$IntegrationPayload>[]
+          }
+          create: {
+            args: Prisma.IntegrationCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$IntegrationPayload>
+          }
+          createMany: {
+            args: Prisma.IntegrationCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.IntegrationCreateManyAndReturnArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$IntegrationPayload>[]
+          }
+          delete: {
+            args: Prisma.IntegrationDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$IntegrationPayload>
+          }
+          update: {
+            args: Prisma.IntegrationUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$IntegrationPayload>
+          }
+          deleteMany: {
+            args: Prisma.IntegrationDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.IntegrationUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.IntegrationUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$IntegrationPayload>
+          }
+          aggregate: {
+            args: Prisma.IntegrationAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateIntegration>
+          }
+          groupBy: {
+            args: Prisma.IntegrationGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<IntegrationGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.IntegrationCountArgs<ExtArgs>,
+            result: $Utils.Optional<IntegrationCountAggregateOutputType> | number
+          }
+        }
+      }
       User: {
         payload: Prisma.$UserPayload<ExtArgs>
         fields: Prisma.UserFieldRefs
@@ -1059,6 +1161,76 @@ export namespace Prisma {
           count: {
             args: Prisma.UserCountArgs<ExtArgs>,
             result: $Utils.Optional<UserCountAggregateOutputType> | number
+          }
+        }
+      }
+      Widget: {
+        payload: Prisma.$WidgetPayload<ExtArgs>
+        fields: Prisma.WidgetFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.WidgetFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$WidgetPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.WidgetFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$WidgetPayload>
+          }
+          findFirst: {
+            args: Prisma.WidgetFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$WidgetPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.WidgetFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$WidgetPayload>
+          }
+          findMany: {
+            args: Prisma.WidgetFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$WidgetPayload>[]
+          }
+          create: {
+            args: Prisma.WidgetCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$WidgetPayload>
+          }
+          createMany: {
+            args: Prisma.WidgetCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.WidgetCreateManyAndReturnArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$WidgetPayload>[]
+          }
+          delete: {
+            args: Prisma.WidgetDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$WidgetPayload>
+          }
+          update: {
+            args: Prisma.WidgetUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$WidgetPayload>
+          }
+          deleteMany: {
+            args: Prisma.WidgetDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.WidgetUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.WidgetUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$WidgetPayload>
+          }
+          aggregate: {
+            args: Prisma.WidgetAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateWidget>
+          }
+          groupBy: {
+            args: Prisma.WidgetGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<WidgetGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.WidgetCountArgs<ExtArgs>,
+            result: $Utils.Optional<WidgetCountAggregateOutputType> | number
           }
         }
       }
@@ -1215,6 +1387,37 @@ export namespace Prisma {
   /**
    * Count Types
    */
+
+
+  /**
+   * Count Type IntegrationCountOutputType
+   */
+
+  export type IntegrationCountOutputType = {
+    widgets: number
+  }
+
+  export type IntegrationCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    widgets?: boolean | IntegrationCountOutputTypeCountWidgetsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * IntegrationCountOutputType without action
+   */
+  export type IntegrationCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the IntegrationCountOutputType
+     */
+    select?: IntegrationCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * IntegrationCountOutputType without action
+   */
+  export type IntegrationCountOutputTypeCountWidgetsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: WidgetWhereInput
+  }
 
 
   /**
@@ -5264,6 +5467,1001 @@ export namespace Prisma {
 
 
   /**
+   * Model Integration
+   */
+
+  export type AggregateIntegration = {
+    _count: IntegrationCountAggregateOutputType | null
+    _min: IntegrationMinAggregateOutputType | null
+    _max: IntegrationMaxAggregateOutputType | null
+  }
+
+  export type IntegrationMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    type: string | null
+    url: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type IntegrationMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    type: string | null
+    url: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type IntegrationCountAggregateOutputType = {
+    id: number
+    name: number
+    type: number
+    url: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type IntegrationMinAggregateInputType = {
+    id?: true
+    name?: true
+    type?: true
+    url?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type IntegrationMaxAggregateInputType = {
+    id?: true
+    name?: true
+    type?: true
+    url?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type IntegrationCountAggregateInputType = {
+    id?: true
+    name?: true
+    type?: true
+    url?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type IntegrationAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Integration to aggregate.
+     */
+    where?: IntegrationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Integrations to fetch.
+     */
+    orderBy?: IntegrationOrderByWithRelationAndSearchRelevanceInput | IntegrationOrderByWithRelationAndSearchRelevanceInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: IntegrationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Integrations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Integrations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Integrations
+    **/
+    _count?: true | IntegrationCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: IntegrationMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: IntegrationMaxAggregateInputType
+  }
+
+  export type GetIntegrationAggregateType<T extends IntegrationAggregateArgs> = {
+        [P in keyof T & keyof AggregateIntegration]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateIntegration[P]>
+      : GetScalarType<T[P], AggregateIntegration[P]>
+  }
+
+
+
+
+  export type IntegrationGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: IntegrationWhereInput
+    orderBy?: IntegrationOrderByWithAggregationInput | IntegrationOrderByWithAggregationInput[]
+    by: IntegrationScalarFieldEnum[] | IntegrationScalarFieldEnum
+    having?: IntegrationScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: IntegrationCountAggregateInputType | true
+    _min?: IntegrationMinAggregateInputType
+    _max?: IntegrationMaxAggregateInputType
+  }
+
+  export type IntegrationGroupByOutputType = {
+    id: string
+    name: string
+    type: string
+    url: string
+    createdAt: Date
+    updatedAt: Date
+    _count: IntegrationCountAggregateOutputType | null
+    _min: IntegrationMinAggregateOutputType | null
+    _max: IntegrationMaxAggregateOutputType | null
+  }
+
+  type GetIntegrationGroupByPayload<T extends IntegrationGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<IntegrationGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof IntegrationGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], IntegrationGroupByOutputType[P]>
+            : GetScalarType<T[P], IntegrationGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type IntegrationSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    type?: boolean
+    url?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    widgets?: boolean | Integration$widgetsArgs<ExtArgs>
+    _count?: boolean | IntegrationCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["integration"]>
+
+  export type IntegrationSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    type?: boolean
+    url?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["integration"]>
+
+  export type IntegrationSelectScalar = {
+    id?: boolean
+    name?: boolean
+    type?: boolean
+    url?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type IntegrationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    widgets?: boolean | Integration$widgetsArgs<ExtArgs>
+    _count?: boolean | IntegrationCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type IntegrationIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $IntegrationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Integration"
+    objects: {
+      widgets: Prisma.$WidgetPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      type: string
+      url: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["integration"]>
+    composites: {}
+  }
+
+  type IntegrationGetPayload<S extends boolean | null | undefined | IntegrationDefaultArgs> = $Result.GetResult<Prisma.$IntegrationPayload, S>
+
+  type IntegrationCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<IntegrationFindManyArgs, 'select' | 'include' | 'distinct' | 'relationLoadStrategy'> & {
+      select?: IntegrationCountAggregateInputType | true
+    }
+
+  export interface IntegrationDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Integration'], meta: { name: 'Integration' } }
+    /**
+     * Find zero or one Integration that matches the filter.
+     * @param {IntegrationFindUniqueArgs} args - Arguments to find a Integration
+     * @example
+     * // Get one Integration
+     * const integration = await prisma.integration.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends IntegrationFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, IntegrationFindUniqueArgs<ExtArgs>>
+    ): Prisma__IntegrationClient<$Result.GetResult<Prisma.$IntegrationPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one Integration that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {IntegrationFindUniqueOrThrowArgs} args - Arguments to find a Integration
+     * @example
+     * // Get one Integration
+     * const integration = await prisma.integration.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends IntegrationFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, IntegrationFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__IntegrationClient<$Result.GetResult<Prisma.$IntegrationPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first Integration that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {IntegrationFindFirstArgs} args - Arguments to find a Integration
+     * @example
+     * // Get one Integration
+     * const integration = await prisma.integration.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends IntegrationFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, IntegrationFindFirstArgs<ExtArgs>>
+    ): Prisma__IntegrationClient<$Result.GetResult<Prisma.$IntegrationPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first Integration that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {IntegrationFindFirstOrThrowArgs} args - Arguments to find a Integration
+     * @example
+     * // Get one Integration
+     * const integration = await prisma.integration.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends IntegrationFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, IntegrationFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__IntegrationClient<$Result.GetResult<Prisma.$IntegrationPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more Integrations that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {IntegrationFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Integrations
+     * const integrations = await prisma.integration.findMany()
+     * 
+     * // Get first 10 Integrations
+     * const integrations = await prisma.integration.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const integrationWithIdOnly = await prisma.integration.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends IntegrationFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, IntegrationFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$IntegrationPayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a Integration.
+     * @param {IntegrationCreateArgs} args - Arguments to create a Integration.
+     * @example
+     * // Create one Integration
+     * const Integration = await prisma.integration.create({
+     *   data: {
+     *     // ... data to create a Integration
+     *   }
+     * })
+     * 
+    **/
+    create<T extends IntegrationCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, IntegrationCreateArgs<ExtArgs>>
+    ): Prisma__IntegrationClient<$Result.GetResult<Prisma.$IntegrationPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many Integrations.
+     * @param {IntegrationCreateManyArgs} args - Arguments to create many Integrations.
+     * @example
+     * // Create many Integrations
+     * const integration = await prisma.integration.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+    **/
+    createMany<T extends IntegrationCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, IntegrationCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Integrations and returns the data saved in the database.
+     * @param {IntegrationCreateManyAndReturnArgs} args - Arguments to create many Integrations.
+     * @example
+     * // Create many Integrations
+     * const integration = await prisma.integration.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Integrations and only return the `id`
+     * const integrationWithIdOnly = await prisma.integration.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+    **/
+    createManyAndReturn<T extends IntegrationCreateManyAndReturnArgs<ExtArgs>>(
+      args?: SelectSubset<T, IntegrationCreateManyAndReturnArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$IntegrationPayload<ExtArgs>, T, 'createManyAndReturn'>>
+
+    /**
+     * Delete a Integration.
+     * @param {IntegrationDeleteArgs} args - Arguments to delete one Integration.
+     * @example
+     * // Delete one Integration
+     * const Integration = await prisma.integration.delete({
+     *   where: {
+     *     // ... filter to delete one Integration
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends IntegrationDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, IntegrationDeleteArgs<ExtArgs>>
+    ): Prisma__IntegrationClient<$Result.GetResult<Prisma.$IntegrationPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one Integration.
+     * @param {IntegrationUpdateArgs} args - Arguments to update one Integration.
+     * @example
+     * // Update one Integration
+     * const integration = await prisma.integration.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends IntegrationUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, IntegrationUpdateArgs<ExtArgs>>
+    ): Prisma__IntegrationClient<$Result.GetResult<Prisma.$IntegrationPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Integrations.
+     * @param {IntegrationDeleteManyArgs} args - Arguments to filter Integrations to delete.
+     * @example
+     * // Delete a few Integrations
+     * const { count } = await prisma.integration.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends IntegrationDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, IntegrationDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Integrations.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {IntegrationUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Integrations
+     * const integration = await prisma.integration.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends IntegrationUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, IntegrationUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Integration.
+     * @param {IntegrationUpsertArgs} args - Arguments to update or create a Integration.
+     * @example
+     * // Update or create a Integration
+     * const integration = await prisma.integration.upsert({
+     *   create: {
+     *     // ... data to create a Integration
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Integration we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends IntegrationUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, IntegrationUpsertArgs<ExtArgs>>
+    ): Prisma__IntegrationClient<$Result.GetResult<Prisma.$IntegrationPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of Integrations.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {IntegrationCountArgs} args - Arguments to filter Integrations to count.
+     * @example
+     * // Count the number of Integrations
+     * const count = await prisma.integration.count({
+     *   where: {
+     *     // ... the filter for the Integrations we want to count
+     *   }
+     * })
+    **/
+    count<T extends IntegrationCountArgs>(
+      args?: Subset<T, IntegrationCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], IntegrationCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Integration.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {IntegrationAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends IntegrationAggregateArgs>(args: Subset<T, IntegrationAggregateArgs>): Prisma.PrismaPromise<GetIntegrationAggregateType<T>>
+
+    /**
+     * Group by Integration.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {IntegrationGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends IntegrationGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: IntegrationGroupByArgs['orderBy'] }
+        : { orderBy?: IntegrationGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, IntegrationGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetIntegrationGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Integration model
+   */
+  readonly fields: IntegrationFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Integration.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__IntegrationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+    widgets<T extends Integration$widgetsArgs<ExtArgs> = {}>(args?: Subset<T, Integration$widgetsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WidgetPayload<ExtArgs>, T, 'findMany'> | Null>;
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the Integration model
+   */ 
+  interface IntegrationFieldRefs {
+    readonly id: FieldRef<"Integration", 'String'>
+    readonly name: FieldRef<"Integration", 'String'>
+    readonly type: FieldRef<"Integration", 'String'>
+    readonly url: FieldRef<"Integration", 'String'>
+    readonly createdAt: FieldRef<"Integration", 'DateTime'>
+    readonly updatedAt: FieldRef<"Integration", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Integration findUnique
+   */
+  export type IntegrationFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Integration
+     */
+    select?: IntegrationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: IntegrationInclude<ExtArgs> | null
+    /**
+     * Filter, which Integration to fetch.
+     */
+    where: IntegrationWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * Integration findUniqueOrThrow
+   */
+  export type IntegrationFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Integration
+     */
+    select?: IntegrationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: IntegrationInclude<ExtArgs> | null
+    /**
+     * Filter, which Integration to fetch.
+     */
+    where: IntegrationWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * Integration findFirst
+   */
+  export type IntegrationFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Integration
+     */
+    select?: IntegrationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: IntegrationInclude<ExtArgs> | null
+    /**
+     * Filter, which Integration to fetch.
+     */
+    where?: IntegrationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Integrations to fetch.
+     */
+    orderBy?: IntegrationOrderByWithRelationAndSearchRelevanceInput | IntegrationOrderByWithRelationAndSearchRelevanceInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Integrations.
+     */
+    cursor?: IntegrationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Integrations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Integrations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Integrations.
+     */
+    distinct?: IntegrationScalarFieldEnum | IntegrationScalarFieldEnum[]
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * Integration findFirstOrThrow
+   */
+  export type IntegrationFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Integration
+     */
+    select?: IntegrationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: IntegrationInclude<ExtArgs> | null
+    /**
+     * Filter, which Integration to fetch.
+     */
+    where?: IntegrationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Integrations to fetch.
+     */
+    orderBy?: IntegrationOrderByWithRelationAndSearchRelevanceInput | IntegrationOrderByWithRelationAndSearchRelevanceInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Integrations.
+     */
+    cursor?: IntegrationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Integrations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Integrations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Integrations.
+     */
+    distinct?: IntegrationScalarFieldEnum | IntegrationScalarFieldEnum[]
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * Integration findMany
+   */
+  export type IntegrationFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Integration
+     */
+    select?: IntegrationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: IntegrationInclude<ExtArgs> | null
+    /**
+     * Filter, which Integrations to fetch.
+     */
+    where?: IntegrationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Integrations to fetch.
+     */
+    orderBy?: IntegrationOrderByWithRelationAndSearchRelevanceInput | IntegrationOrderByWithRelationAndSearchRelevanceInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Integrations.
+     */
+    cursor?: IntegrationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Integrations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Integrations.
+     */
+    skip?: number
+    distinct?: IntegrationScalarFieldEnum | IntegrationScalarFieldEnum[]
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * Integration create
+   */
+  export type IntegrationCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Integration
+     */
+    select?: IntegrationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: IntegrationInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Integration.
+     */
+    data: XOR<IntegrationCreateInput, IntegrationUncheckedCreateInput>
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * Integration createMany
+   */
+  export type IntegrationCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Integrations.
+     */
+    data: IntegrationCreateManyInput | IntegrationCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Integration createManyAndReturn
+   */
+  export type IntegrationCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Integration
+     */
+    select?: IntegrationSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many Integrations.
+     */
+    data: IntegrationCreateManyInput | IntegrationCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Integration update
+   */
+  export type IntegrationUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Integration
+     */
+    select?: IntegrationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: IntegrationInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Integration.
+     */
+    data: XOR<IntegrationUpdateInput, IntegrationUncheckedUpdateInput>
+    /**
+     * Choose, which Integration to update.
+     */
+    where: IntegrationWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * Integration updateMany
+   */
+  export type IntegrationUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Integrations.
+     */
+    data: XOR<IntegrationUpdateManyMutationInput, IntegrationUncheckedUpdateManyInput>
+    /**
+     * Filter which Integrations to update
+     */
+    where?: IntegrationWhereInput
+  }
+
+  /**
+   * Integration upsert
+   */
+  export type IntegrationUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Integration
+     */
+    select?: IntegrationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: IntegrationInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Integration to update in case it exists.
+     */
+    where: IntegrationWhereUniqueInput
+    /**
+     * In case the Integration found by the `where` argument doesn't exist, create a new Integration with this data.
+     */
+    create: XOR<IntegrationCreateInput, IntegrationUncheckedCreateInput>
+    /**
+     * In case the Integration was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<IntegrationUpdateInput, IntegrationUncheckedUpdateInput>
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * Integration delete
+   */
+  export type IntegrationDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Integration
+     */
+    select?: IntegrationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: IntegrationInclude<ExtArgs> | null
+    /**
+     * Filter which Integration to delete.
+     */
+    where: IntegrationWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * Integration deleteMany
+   */
+  export type IntegrationDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Integrations to delete
+     */
+    where?: IntegrationWhereInput
+  }
+
+  /**
+   * Integration.widgets
+   */
+  export type Integration$widgetsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Widget
+     */
+    select?: WidgetSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WidgetInclude<ExtArgs> | null
+    where?: WidgetWhereInput
+    orderBy?: WidgetOrderByWithRelationAndSearchRelevanceInput | WidgetOrderByWithRelationAndSearchRelevanceInput[]
+    cursor?: WidgetWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: WidgetScalarFieldEnum | WidgetScalarFieldEnum[]
+  }
+
+  /**
+   * Integration without action
+   */
+  export type IntegrationDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Integration
+     */
+    select?: IntegrationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: IntegrationInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Model User
    */
 
@@ -6321,6 +7519,962 @@ export namespace Prisma {
 
 
   /**
+   * Model Widget
+   */
+
+  export type AggregateWidget = {
+    _count: WidgetCountAggregateOutputType | null
+    _min: WidgetMinAggregateOutputType | null
+    _max: WidgetMaxAggregateOutputType | null
+  }
+
+  export type WidgetMinAggregateOutputType = {
+    id: string | null
+    slug: string | null
+    layout: string | null
+    integrationId: string | null
+  }
+
+  export type WidgetMaxAggregateOutputType = {
+    id: string | null
+    slug: string | null
+    layout: string | null
+    integrationId: string | null
+  }
+
+  export type WidgetCountAggregateOutputType = {
+    id: number
+    slug: number
+    layout: number
+    integrationId: number
+    _all: number
+  }
+
+
+  export type WidgetMinAggregateInputType = {
+    id?: true
+    slug?: true
+    layout?: true
+    integrationId?: true
+  }
+
+  export type WidgetMaxAggregateInputType = {
+    id?: true
+    slug?: true
+    layout?: true
+    integrationId?: true
+  }
+
+  export type WidgetCountAggregateInputType = {
+    id?: true
+    slug?: true
+    layout?: true
+    integrationId?: true
+    _all?: true
+  }
+
+  export type WidgetAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Widget to aggregate.
+     */
+    where?: WidgetWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Widgets to fetch.
+     */
+    orderBy?: WidgetOrderByWithRelationAndSearchRelevanceInput | WidgetOrderByWithRelationAndSearchRelevanceInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: WidgetWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Widgets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Widgets.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Widgets
+    **/
+    _count?: true | WidgetCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: WidgetMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: WidgetMaxAggregateInputType
+  }
+
+  export type GetWidgetAggregateType<T extends WidgetAggregateArgs> = {
+        [P in keyof T & keyof AggregateWidget]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateWidget[P]>
+      : GetScalarType<T[P], AggregateWidget[P]>
+  }
+
+
+
+
+  export type WidgetGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: WidgetWhereInput
+    orderBy?: WidgetOrderByWithAggregationInput | WidgetOrderByWithAggregationInput[]
+    by: WidgetScalarFieldEnum[] | WidgetScalarFieldEnum
+    having?: WidgetScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: WidgetCountAggregateInputType | true
+    _min?: WidgetMinAggregateInputType
+    _max?: WidgetMaxAggregateInputType
+  }
+
+  export type WidgetGroupByOutputType = {
+    id: string
+    slug: string
+    layout: string
+    integrationId: string
+    _count: WidgetCountAggregateOutputType | null
+    _min: WidgetMinAggregateOutputType | null
+    _max: WidgetMaxAggregateOutputType | null
+  }
+
+  type GetWidgetGroupByPayload<T extends WidgetGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<WidgetGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof WidgetGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], WidgetGroupByOutputType[P]>
+            : GetScalarType<T[P], WidgetGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type WidgetSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    slug?: boolean
+    layout?: boolean
+    integrationId?: boolean
+    integration?: boolean | IntegrationDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["widget"]>
+
+  export type WidgetSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    slug?: boolean
+    layout?: boolean
+    integrationId?: boolean
+    integration?: boolean | IntegrationDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["widget"]>
+
+  export type WidgetSelectScalar = {
+    id?: boolean
+    slug?: boolean
+    layout?: boolean
+    integrationId?: boolean
+  }
+
+  export type WidgetInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    integration?: boolean | IntegrationDefaultArgs<ExtArgs>
+  }
+  export type WidgetIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    integration?: boolean | IntegrationDefaultArgs<ExtArgs>
+  }
+
+  export type $WidgetPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Widget"
+    objects: {
+      integration: Prisma.$IntegrationPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      slug: string
+      layout: string
+      integrationId: string
+    }, ExtArgs["result"]["widget"]>
+    composites: {}
+  }
+
+  type WidgetGetPayload<S extends boolean | null | undefined | WidgetDefaultArgs> = $Result.GetResult<Prisma.$WidgetPayload, S>
+
+  type WidgetCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<WidgetFindManyArgs, 'select' | 'include' | 'distinct' | 'relationLoadStrategy'> & {
+      select?: WidgetCountAggregateInputType | true
+    }
+
+  export interface WidgetDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Widget'], meta: { name: 'Widget' } }
+    /**
+     * Find zero or one Widget that matches the filter.
+     * @param {WidgetFindUniqueArgs} args - Arguments to find a Widget
+     * @example
+     * // Get one Widget
+     * const widget = await prisma.widget.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends WidgetFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, WidgetFindUniqueArgs<ExtArgs>>
+    ): Prisma__WidgetClient<$Result.GetResult<Prisma.$WidgetPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one Widget that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {WidgetFindUniqueOrThrowArgs} args - Arguments to find a Widget
+     * @example
+     * // Get one Widget
+     * const widget = await prisma.widget.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends WidgetFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, WidgetFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__WidgetClient<$Result.GetResult<Prisma.$WidgetPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first Widget that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WidgetFindFirstArgs} args - Arguments to find a Widget
+     * @example
+     * // Get one Widget
+     * const widget = await prisma.widget.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends WidgetFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, WidgetFindFirstArgs<ExtArgs>>
+    ): Prisma__WidgetClient<$Result.GetResult<Prisma.$WidgetPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first Widget that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WidgetFindFirstOrThrowArgs} args - Arguments to find a Widget
+     * @example
+     * // Get one Widget
+     * const widget = await prisma.widget.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends WidgetFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, WidgetFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__WidgetClient<$Result.GetResult<Prisma.$WidgetPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more Widgets that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WidgetFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Widgets
+     * const widgets = await prisma.widget.findMany()
+     * 
+     * // Get first 10 Widgets
+     * const widgets = await prisma.widget.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const widgetWithIdOnly = await prisma.widget.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends WidgetFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, WidgetFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WidgetPayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a Widget.
+     * @param {WidgetCreateArgs} args - Arguments to create a Widget.
+     * @example
+     * // Create one Widget
+     * const Widget = await prisma.widget.create({
+     *   data: {
+     *     // ... data to create a Widget
+     *   }
+     * })
+     * 
+    **/
+    create<T extends WidgetCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, WidgetCreateArgs<ExtArgs>>
+    ): Prisma__WidgetClient<$Result.GetResult<Prisma.$WidgetPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many Widgets.
+     * @param {WidgetCreateManyArgs} args - Arguments to create many Widgets.
+     * @example
+     * // Create many Widgets
+     * const widget = await prisma.widget.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+    **/
+    createMany<T extends WidgetCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, WidgetCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Widgets and returns the data saved in the database.
+     * @param {WidgetCreateManyAndReturnArgs} args - Arguments to create many Widgets.
+     * @example
+     * // Create many Widgets
+     * const widget = await prisma.widget.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Widgets and only return the `id`
+     * const widgetWithIdOnly = await prisma.widget.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+    **/
+    createManyAndReturn<T extends WidgetCreateManyAndReturnArgs<ExtArgs>>(
+      args?: SelectSubset<T, WidgetCreateManyAndReturnArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WidgetPayload<ExtArgs>, T, 'createManyAndReturn'>>
+
+    /**
+     * Delete a Widget.
+     * @param {WidgetDeleteArgs} args - Arguments to delete one Widget.
+     * @example
+     * // Delete one Widget
+     * const Widget = await prisma.widget.delete({
+     *   where: {
+     *     // ... filter to delete one Widget
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends WidgetDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, WidgetDeleteArgs<ExtArgs>>
+    ): Prisma__WidgetClient<$Result.GetResult<Prisma.$WidgetPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one Widget.
+     * @param {WidgetUpdateArgs} args - Arguments to update one Widget.
+     * @example
+     * // Update one Widget
+     * const widget = await prisma.widget.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends WidgetUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, WidgetUpdateArgs<ExtArgs>>
+    ): Prisma__WidgetClient<$Result.GetResult<Prisma.$WidgetPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Widgets.
+     * @param {WidgetDeleteManyArgs} args - Arguments to filter Widgets to delete.
+     * @example
+     * // Delete a few Widgets
+     * const { count } = await prisma.widget.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends WidgetDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, WidgetDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Widgets.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WidgetUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Widgets
+     * const widget = await prisma.widget.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends WidgetUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, WidgetUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Widget.
+     * @param {WidgetUpsertArgs} args - Arguments to update or create a Widget.
+     * @example
+     * // Update or create a Widget
+     * const widget = await prisma.widget.upsert({
+     *   create: {
+     *     // ... data to create a Widget
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Widget we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends WidgetUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, WidgetUpsertArgs<ExtArgs>>
+    ): Prisma__WidgetClient<$Result.GetResult<Prisma.$WidgetPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of Widgets.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WidgetCountArgs} args - Arguments to filter Widgets to count.
+     * @example
+     * // Count the number of Widgets
+     * const count = await prisma.widget.count({
+     *   where: {
+     *     // ... the filter for the Widgets we want to count
+     *   }
+     * })
+    **/
+    count<T extends WidgetCountArgs>(
+      args?: Subset<T, WidgetCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], WidgetCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Widget.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WidgetAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends WidgetAggregateArgs>(args: Subset<T, WidgetAggregateArgs>): Prisma.PrismaPromise<GetWidgetAggregateType<T>>
+
+    /**
+     * Group by Widget.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WidgetGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends WidgetGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: WidgetGroupByArgs['orderBy'] }
+        : { orderBy?: WidgetGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, WidgetGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetWidgetGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Widget model
+   */
+  readonly fields: WidgetFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Widget.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__WidgetClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+    integration<T extends IntegrationDefaultArgs<ExtArgs> = {}>(args?: Subset<T, IntegrationDefaultArgs<ExtArgs>>): Prisma__IntegrationClient<$Result.GetResult<Prisma.$IntegrationPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the Widget model
+   */ 
+  interface WidgetFieldRefs {
+    readonly id: FieldRef<"Widget", 'String'>
+    readonly slug: FieldRef<"Widget", 'String'>
+    readonly layout: FieldRef<"Widget", 'String'>
+    readonly integrationId: FieldRef<"Widget", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Widget findUnique
+   */
+  export type WidgetFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Widget
+     */
+    select?: WidgetSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WidgetInclude<ExtArgs> | null
+    /**
+     * Filter, which Widget to fetch.
+     */
+    where: WidgetWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * Widget findUniqueOrThrow
+   */
+  export type WidgetFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Widget
+     */
+    select?: WidgetSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WidgetInclude<ExtArgs> | null
+    /**
+     * Filter, which Widget to fetch.
+     */
+    where: WidgetWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * Widget findFirst
+   */
+  export type WidgetFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Widget
+     */
+    select?: WidgetSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WidgetInclude<ExtArgs> | null
+    /**
+     * Filter, which Widget to fetch.
+     */
+    where?: WidgetWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Widgets to fetch.
+     */
+    orderBy?: WidgetOrderByWithRelationAndSearchRelevanceInput | WidgetOrderByWithRelationAndSearchRelevanceInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Widgets.
+     */
+    cursor?: WidgetWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Widgets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Widgets.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Widgets.
+     */
+    distinct?: WidgetScalarFieldEnum | WidgetScalarFieldEnum[]
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * Widget findFirstOrThrow
+   */
+  export type WidgetFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Widget
+     */
+    select?: WidgetSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WidgetInclude<ExtArgs> | null
+    /**
+     * Filter, which Widget to fetch.
+     */
+    where?: WidgetWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Widgets to fetch.
+     */
+    orderBy?: WidgetOrderByWithRelationAndSearchRelevanceInput | WidgetOrderByWithRelationAndSearchRelevanceInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Widgets.
+     */
+    cursor?: WidgetWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Widgets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Widgets.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Widgets.
+     */
+    distinct?: WidgetScalarFieldEnum | WidgetScalarFieldEnum[]
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * Widget findMany
+   */
+  export type WidgetFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Widget
+     */
+    select?: WidgetSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WidgetInclude<ExtArgs> | null
+    /**
+     * Filter, which Widgets to fetch.
+     */
+    where?: WidgetWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Widgets to fetch.
+     */
+    orderBy?: WidgetOrderByWithRelationAndSearchRelevanceInput | WidgetOrderByWithRelationAndSearchRelevanceInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Widgets.
+     */
+    cursor?: WidgetWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Widgets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Widgets.
+     */
+    skip?: number
+    distinct?: WidgetScalarFieldEnum | WidgetScalarFieldEnum[]
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * Widget create
+   */
+  export type WidgetCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Widget
+     */
+    select?: WidgetSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WidgetInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Widget.
+     */
+    data: XOR<WidgetCreateInput, WidgetUncheckedCreateInput>
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * Widget createMany
+   */
+  export type WidgetCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Widgets.
+     */
+    data: WidgetCreateManyInput | WidgetCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Widget createManyAndReturn
+   */
+  export type WidgetCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Widget
+     */
+    select?: WidgetSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many Widgets.
+     */
+    data: WidgetCreateManyInput | WidgetCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WidgetIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Widget update
+   */
+  export type WidgetUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Widget
+     */
+    select?: WidgetSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WidgetInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Widget.
+     */
+    data: XOR<WidgetUpdateInput, WidgetUncheckedUpdateInput>
+    /**
+     * Choose, which Widget to update.
+     */
+    where: WidgetWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * Widget updateMany
+   */
+  export type WidgetUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Widgets.
+     */
+    data: XOR<WidgetUpdateManyMutationInput, WidgetUncheckedUpdateManyInput>
+    /**
+     * Filter which Widgets to update
+     */
+    where?: WidgetWhereInput
+  }
+
+  /**
+   * Widget upsert
+   */
+  export type WidgetUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Widget
+     */
+    select?: WidgetSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WidgetInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Widget to update in case it exists.
+     */
+    where: WidgetWhereUniqueInput
+    /**
+     * In case the Widget found by the `where` argument doesn't exist, create a new Widget with this data.
+     */
+    create: XOR<WidgetCreateInput, WidgetUncheckedCreateInput>
+    /**
+     * In case the Widget was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<WidgetUpdateInput, WidgetUncheckedUpdateInput>
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * Widget delete
+   */
+  export type WidgetDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Widget
+     */
+    select?: WidgetSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WidgetInclude<ExtArgs> | null
+    /**
+     * Filter which Widget to delete.
+     */
+    where: WidgetWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * Widget deleteMany
+   */
+  export type WidgetDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Widgets to delete
+     */
+    where?: WidgetWhereInput
+  }
+
+  /**
+   * Widget without action
+   */
+  export type WidgetDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Widget
+     */
+    select?: WidgetSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WidgetInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -6395,6 +8549,18 @@ export namespace Prisma {
   export type AuthenticatorScalarFieldEnum = (typeof AuthenticatorScalarFieldEnum)[keyof typeof AuthenticatorScalarFieldEnum]
 
 
+  export const IntegrationScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    type: 'type',
+    url: 'url',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type IntegrationScalarFieldEnum = (typeof IntegrationScalarFieldEnum)[keyof typeof IntegrationScalarFieldEnum]
+
+
   export const UserScalarFieldEnum: {
     id: 'id',
     name: 'name',
@@ -6406,6 +8572,16 @@ export namespace Prisma {
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+
+
+  export const WidgetScalarFieldEnum: {
+    id: 'id',
+    slug: 'slug',
+    layout: 'layout',
+    integrationId: 'integrationId'
+  };
+
+  export type WidgetScalarFieldEnum = (typeof WidgetScalarFieldEnum)[keyof typeof WidgetScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -6476,6 +8652,16 @@ export namespace Prisma {
   export type AuthenticatorOrderByRelevanceFieldEnum = (typeof AuthenticatorOrderByRelevanceFieldEnum)[keyof typeof AuthenticatorOrderByRelevanceFieldEnum]
 
 
+  export const IntegrationOrderByRelevanceFieldEnum: {
+    id: 'id',
+    name: 'name',
+    type: 'type',
+    url: 'url'
+  };
+
+  export type IntegrationOrderByRelevanceFieldEnum = (typeof IntegrationOrderByRelevanceFieldEnum)[keyof typeof IntegrationOrderByRelevanceFieldEnum]
+
+
   export const UserOrderByRelevanceFieldEnum: {
     id: 'id',
     name: 'name',
@@ -6484,6 +8670,16 @@ export namespace Prisma {
   };
 
   export type UserOrderByRelevanceFieldEnum = (typeof UserOrderByRelevanceFieldEnum)[keyof typeof UserOrderByRelevanceFieldEnum]
+
+
+  export const WidgetOrderByRelevanceFieldEnum: {
+    id: 'id',
+    slug: 'slug',
+    layout: 'layout',
+    integrationId: 'integrationId'
+  };
+
+  export type WidgetOrderByRelevanceFieldEnum = (typeof WidgetOrderByRelevanceFieldEnum)[keyof typeof WidgetOrderByRelevanceFieldEnum]
 
 
   /**
@@ -6830,6 +9026,67 @@ export namespace Prisma {
     transports?: StringNullableWithAggregatesFilter<"Authenticator"> | string | null
   }
 
+  export type IntegrationWhereInput = {
+    AND?: IntegrationWhereInput | IntegrationWhereInput[]
+    OR?: IntegrationWhereInput[]
+    NOT?: IntegrationWhereInput | IntegrationWhereInput[]
+    id?: StringFilter<"Integration"> | string
+    name?: StringFilter<"Integration"> | string
+    type?: StringFilter<"Integration"> | string
+    url?: StringFilter<"Integration"> | string
+    createdAt?: DateTimeFilter<"Integration"> | Date | string
+    updatedAt?: DateTimeFilter<"Integration"> | Date | string
+    widgets?: WidgetListRelationFilter
+  }
+
+  export type IntegrationOrderByWithRelationAndSearchRelevanceInput = {
+    id?: SortOrder
+    name?: SortOrder
+    type?: SortOrder
+    url?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    widgets?: WidgetOrderByRelationAggregateInput
+    _relevance?: IntegrationOrderByRelevanceInput
+  }
+
+  export type IntegrationWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    name?: string
+    AND?: IntegrationWhereInput | IntegrationWhereInput[]
+    OR?: IntegrationWhereInput[]
+    NOT?: IntegrationWhereInput | IntegrationWhereInput[]
+    type?: StringFilter<"Integration"> | string
+    url?: StringFilter<"Integration"> | string
+    createdAt?: DateTimeFilter<"Integration"> | Date | string
+    updatedAt?: DateTimeFilter<"Integration"> | Date | string
+    widgets?: WidgetListRelationFilter
+  }, "id" | "name">
+
+  export type IntegrationOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    type?: SortOrder
+    url?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: IntegrationCountOrderByAggregateInput
+    _max?: IntegrationMaxOrderByAggregateInput
+    _min?: IntegrationMinOrderByAggregateInput
+  }
+
+  export type IntegrationScalarWhereWithAggregatesInput = {
+    AND?: IntegrationScalarWhereWithAggregatesInput | IntegrationScalarWhereWithAggregatesInput[]
+    OR?: IntegrationScalarWhereWithAggregatesInput[]
+    NOT?: IntegrationScalarWhereWithAggregatesInput | IntegrationScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Integration"> | string
+    name?: StringWithAggregatesFilter<"Integration"> | string
+    type?: StringWithAggregatesFilter<"Integration"> | string
+    url?: StringWithAggregatesFilter<"Integration"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Integration"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Integration"> | Date | string
+  }
+
   export type UserWhereInput = {
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
@@ -6900,6 +9157,57 @@ export namespace Prisma {
     image?: StringNullableWithAggregatesFilter<"User"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
+  }
+
+  export type WidgetWhereInput = {
+    AND?: WidgetWhereInput | WidgetWhereInput[]
+    OR?: WidgetWhereInput[]
+    NOT?: WidgetWhereInput | WidgetWhereInput[]
+    id?: StringFilter<"Widget"> | string
+    slug?: StringFilter<"Widget"> | string
+    layout?: StringFilter<"Widget"> | string
+    integrationId?: StringFilter<"Widget"> | string
+    integration?: XOR<IntegrationRelationFilter, IntegrationWhereInput>
+  }
+
+  export type WidgetOrderByWithRelationAndSearchRelevanceInput = {
+    id?: SortOrder
+    slug?: SortOrder
+    layout?: SortOrder
+    integrationId?: SortOrder
+    integration?: IntegrationOrderByWithRelationAndSearchRelevanceInput
+    _relevance?: WidgetOrderByRelevanceInput
+  }
+
+  export type WidgetWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    slug?: string
+    AND?: WidgetWhereInput | WidgetWhereInput[]
+    OR?: WidgetWhereInput[]
+    NOT?: WidgetWhereInput | WidgetWhereInput[]
+    layout?: StringFilter<"Widget"> | string
+    integrationId?: StringFilter<"Widget"> | string
+    integration?: XOR<IntegrationRelationFilter, IntegrationWhereInput>
+  }, "id" | "slug">
+
+  export type WidgetOrderByWithAggregationInput = {
+    id?: SortOrder
+    slug?: SortOrder
+    layout?: SortOrder
+    integrationId?: SortOrder
+    _count?: WidgetCountOrderByAggregateInput
+    _max?: WidgetMaxOrderByAggregateInput
+    _min?: WidgetMinOrderByAggregateInput
+  }
+
+  export type WidgetScalarWhereWithAggregatesInput = {
+    AND?: WidgetScalarWhereWithAggregatesInput | WidgetScalarWhereWithAggregatesInput[]
+    OR?: WidgetScalarWhereWithAggregatesInput[]
+    NOT?: WidgetScalarWhereWithAggregatesInput | WidgetScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Widget"> | string
+    slug?: StringWithAggregatesFilter<"Widget"> | string
+    layout?: StringWithAggregatesFilter<"Widget"> | string
+    integrationId?: StringWithAggregatesFilter<"Widget"> | string
   }
 
   export type AccountCreateInput = {
@@ -7186,6 +9494,73 @@ export namespace Prisma {
     transports?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
+  export type IntegrationCreateInput = {
+    id?: string
+    name: string
+    type?: string
+    url: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    widgets?: WidgetCreateNestedManyWithoutIntegrationInput
+  }
+
+  export type IntegrationUncheckedCreateInput = {
+    id?: string
+    name: string
+    type?: string
+    url: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    widgets?: WidgetUncheckedCreateNestedManyWithoutIntegrationInput
+  }
+
+  export type IntegrationUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    widgets?: WidgetUpdateManyWithoutIntegrationNestedInput
+  }
+
+  export type IntegrationUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    widgets?: WidgetUncheckedUpdateManyWithoutIntegrationNestedInput
+  }
+
+  export type IntegrationCreateManyInput = {
+    id?: string
+    name: string
+    type?: string
+    url: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type IntegrationUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type IntegrationUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type UserCreateInput = {
     id?: string
     name?: string | null
@@ -7266,6 +9641,54 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type WidgetCreateInput = {
+    id?: string
+    slug: string
+    layout?: string
+    integration: IntegrationCreateNestedOneWithoutWidgetsInput
+  }
+
+  export type WidgetUncheckedCreateInput = {
+    id?: string
+    slug: string
+    layout?: string
+    integrationId: string
+  }
+
+  export type WidgetUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    layout?: StringFieldUpdateOperationsInput | string
+    integration?: IntegrationUpdateOneRequiredWithoutWidgetsNestedInput
+  }
+
+  export type WidgetUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    layout?: StringFieldUpdateOperationsInput | string
+    integrationId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type WidgetCreateManyInput = {
+    id?: string
+    slug: string
+    layout?: string
+    integrationId: string
+  }
+
+  export type WidgetUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    layout?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type WidgetUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    layout?: StringFieldUpdateOperationsInput | string
+    integrationId?: StringFieldUpdateOperationsInput | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -7618,6 +10041,49 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
+  export type WidgetListRelationFilter = {
+    every?: WidgetWhereInput
+    some?: WidgetWhereInput
+    none?: WidgetWhereInput
+  }
+
+  export type WidgetOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type IntegrationOrderByRelevanceInput = {
+    fields: IntegrationOrderByRelevanceFieldEnum | IntegrationOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type IntegrationCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    type?: SortOrder
+    url?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type IntegrationMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    type?: SortOrder
+    url?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type IntegrationMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    type?: SortOrder
+    url?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
   export type DateTimeNullableFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
@@ -7709,6 +10175,38 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
+  export type IntegrationRelationFilter = {
+    is?: IntegrationWhereInput
+    isNot?: IntegrationWhereInput
+  }
+
+  export type WidgetOrderByRelevanceInput = {
+    fields: WidgetOrderByRelevanceFieldEnum | WidgetOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type WidgetCountOrderByAggregateInput = {
+    id?: SortOrder
+    slug?: SortOrder
+    layout?: SortOrder
+    integrationId?: SortOrder
+  }
+
+  export type WidgetMaxOrderByAggregateInput = {
+    id?: SortOrder
+    slug?: SortOrder
+    layout?: SortOrder
+    integrationId?: SortOrder
+  }
+
+  export type WidgetMinOrderByAggregateInput = {
+    id?: SortOrder
+    slug?: SortOrder
+    layout?: SortOrder
+    integrationId?: SortOrder
+  }
+
   export type UserCreateNestedOneWithoutAccountsInput = {
     create?: XOR<UserCreateWithoutAccountsInput, UserUncheckedCreateWithoutAccountsInput>
     connectOrCreate?: UserCreateOrConnectWithoutAccountsInput
@@ -7781,6 +10279,48 @@ export namespace Prisma {
     upsert?: UserUpsertWithoutAuthenticatorInput
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutAuthenticatorInput, UserUpdateWithoutAuthenticatorInput>, UserUncheckedUpdateWithoutAuthenticatorInput>
+  }
+
+  export type WidgetCreateNestedManyWithoutIntegrationInput = {
+    create?: XOR<WidgetCreateWithoutIntegrationInput, WidgetUncheckedCreateWithoutIntegrationInput> | WidgetCreateWithoutIntegrationInput[] | WidgetUncheckedCreateWithoutIntegrationInput[]
+    connectOrCreate?: WidgetCreateOrConnectWithoutIntegrationInput | WidgetCreateOrConnectWithoutIntegrationInput[]
+    createMany?: WidgetCreateManyIntegrationInputEnvelope
+    connect?: WidgetWhereUniqueInput | WidgetWhereUniqueInput[]
+  }
+
+  export type WidgetUncheckedCreateNestedManyWithoutIntegrationInput = {
+    create?: XOR<WidgetCreateWithoutIntegrationInput, WidgetUncheckedCreateWithoutIntegrationInput> | WidgetCreateWithoutIntegrationInput[] | WidgetUncheckedCreateWithoutIntegrationInput[]
+    connectOrCreate?: WidgetCreateOrConnectWithoutIntegrationInput | WidgetCreateOrConnectWithoutIntegrationInput[]
+    createMany?: WidgetCreateManyIntegrationInputEnvelope
+    connect?: WidgetWhereUniqueInput | WidgetWhereUniqueInput[]
+  }
+
+  export type WidgetUpdateManyWithoutIntegrationNestedInput = {
+    create?: XOR<WidgetCreateWithoutIntegrationInput, WidgetUncheckedCreateWithoutIntegrationInput> | WidgetCreateWithoutIntegrationInput[] | WidgetUncheckedCreateWithoutIntegrationInput[]
+    connectOrCreate?: WidgetCreateOrConnectWithoutIntegrationInput | WidgetCreateOrConnectWithoutIntegrationInput[]
+    upsert?: WidgetUpsertWithWhereUniqueWithoutIntegrationInput | WidgetUpsertWithWhereUniqueWithoutIntegrationInput[]
+    createMany?: WidgetCreateManyIntegrationInputEnvelope
+    set?: WidgetWhereUniqueInput | WidgetWhereUniqueInput[]
+    disconnect?: WidgetWhereUniqueInput | WidgetWhereUniqueInput[]
+    delete?: WidgetWhereUniqueInput | WidgetWhereUniqueInput[]
+    connect?: WidgetWhereUniqueInput | WidgetWhereUniqueInput[]
+    update?: WidgetUpdateWithWhereUniqueWithoutIntegrationInput | WidgetUpdateWithWhereUniqueWithoutIntegrationInput[]
+    updateMany?: WidgetUpdateManyWithWhereWithoutIntegrationInput | WidgetUpdateManyWithWhereWithoutIntegrationInput[]
+    deleteMany?: WidgetScalarWhereInput | WidgetScalarWhereInput[]
+  }
+
+  export type WidgetUncheckedUpdateManyWithoutIntegrationNestedInput = {
+    create?: XOR<WidgetCreateWithoutIntegrationInput, WidgetUncheckedCreateWithoutIntegrationInput> | WidgetCreateWithoutIntegrationInput[] | WidgetUncheckedCreateWithoutIntegrationInput[]
+    connectOrCreate?: WidgetCreateOrConnectWithoutIntegrationInput | WidgetCreateOrConnectWithoutIntegrationInput[]
+    upsert?: WidgetUpsertWithWhereUniqueWithoutIntegrationInput | WidgetUpsertWithWhereUniqueWithoutIntegrationInput[]
+    createMany?: WidgetCreateManyIntegrationInputEnvelope
+    set?: WidgetWhereUniqueInput | WidgetWhereUniqueInput[]
+    disconnect?: WidgetWhereUniqueInput | WidgetWhereUniqueInput[]
+    delete?: WidgetWhereUniqueInput | WidgetWhereUniqueInput[]
+    connect?: WidgetWhereUniqueInput | WidgetWhereUniqueInput[]
+    update?: WidgetUpdateWithWhereUniqueWithoutIntegrationInput | WidgetUpdateWithWhereUniqueWithoutIntegrationInput[]
+    updateMany?: WidgetUpdateManyWithWhereWithoutIntegrationInput | WidgetUpdateManyWithWhereWithoutIntegrationInput[]
+    deleteMany?: WidgetScalarWhereInput | WidgetScalarWhereInput[]
   }
 
   export type AccountCreateNestedManyWithoutUserInput = {
@@ -7911,6 +10451,20 @@ export namespace Prisma {
     update?: AuthenticatorUpdateWithWhereUniqueWithoutUserInput | AuthenticatorUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: AuthenticatorUpdateManyWithWhereWithoutUserInput | AuthenticatorUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: AuthenticatorScalarWhereInput | AuthenticatorScalarWhereInput[]
+  }
+
+  export type IntegrationCreateNestedOneWithoutWidgetsInput = {
+    create?: XOR<IntegrationCreateWithoutWidgetsInput, IntegrationUncheckedCreateWithoutWidgetsInput>
+    connectOrCreate?: IntegrationCreateOrConnectWithoutWidgetsInput
+    connect?: IntegrationWhereUniqueInput
+  }
+
+  export type IntegrationUpdateOneRequiredWithoutWidgetsNestedInput = {
+    create?: XOR<IntegrationCreateWithoutWidgetsInput, IntegrationUncheckedCreateWithoutWidgetsInput>
+    connectOrCreate?: IntegrationCreateOrConnectWithoutWidgetsInput
+    upsert?: IntegrationUpsertWithoutWidgetsInput
+    connect?: IntegrationWhereUniqueInput
+    update?: XOR<XOR<IntegrationUpdateToOneWithWhereWithoutWidgetsInput, IntegrationUpdateWithoutWidgetsInput>, IntegrationUncheckedUpdateWithoutWidgetsInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -8310,6 +10864,54 @@ export namespace Prisma {
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
   }
 
+  export type WidgetCreateWithoutIntegrationInput = {
+    id?: string
+    slug: string
+    layout?: string
+  }
+
+  export type WidgetUncheckedCreateWithoutIntegrationInput = {
+    id?: string
+    slug: string
+    layout?: string
+  }
+
+  export type WidgetCreateOrConnectWithoutIntegrationInput = {
+    where: WidgetWhereUniqueInput
+    create: XOR<WidgetCreateWithoutIntegrationInput, WidgetUncheckedCreateWithoutIntegrationInput>
+  }
+
+  export type WidgetCreateManyIntegrationInputEnvelope = {
+    data: WidgetCreateManyIntegrationInput | WidgetCreateManyIntegrationInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type WidgetUpsertWithWhereUniqueWithoutIntegrationInput = {
+    where: WidgetWhereUniqueInput
+    update: XOR<WidgetUpdateWithoutIntegrationInput, WidgetUncheckedUpdateWithoutIntegrationInput>
+    create: XOR<WidgetCreateWithoutIntegrationInput, WidgetUncheckedCreateWithoutIntegrationInput>
+  }
+
+  export type WidgetUpdateWithWhereUniqueWithoutIntegrationInput = {
+    where: WidgetWhereUniqueInput
+    data: XOR<WidgetUpdateWithoutIntegrationInput, WidgetUncheckedUpdateWithoutIntegrationInput>
+  }
+
+  export type WidgetUpdateManyWithWhereWithoutIntegrationInput = {
+    where: WidgetScalarWhereInput
+    data: XOR<WidgetUpdateManyMutationInput, WidgetUncheckedUpdateManyWithoutIntegrationInput>
+  }
+
+  export type WidgetScalarWhereInput = {
+    AND?: WidgetScalarWhereInput | WidgetScalarWhereInput[]
+    OR?: WidgetScalarWhereInput[]
+    NOT?: WidgetScalarWhereInput | WidgetScalarWhereInput[]
+    id?: StringFilter<"Widget"> | string
+    slug?: StringFilter<"Widget"> | string
+    layout?: StringFilter<"Widget"> | string
+    integrationId?: StringFilter<"Widget"> | string
+  }
+
   export type AccountCreateWithoutUserInput = {
     type: string
     provider: string
@@ -8496,6 +11098,82 @@ export namespace Prisma {
     transports?: StringNullableFilter<"Authenticator"> | string | null
   }
 
+  export type IntegrationCreateWithoutWidgetsInput = {
+    id?: string
+    name: string
+    type?: string
+    url: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type IntegrationUncheckedCreateWithoutWidgetsInput = {
+    id?: string
+    name: string
+    type?: string
+    url: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type IntegrationCreateOrConnectWithoutWidgetsInput = {
+    where: IntegrationWhereUniqueInput
+    create: XOR<IntegrationCreateWithoutWidgetsInput, IntegrationUncheckedCreateWithoutWidgetsInput>
+  }
+
+  export type IntegrationUpsertWithoutWidgetsInput = {
+    update: XOR<IntegrationUpdateWithoutWidgetsInput, IntegrationUncheckedUpdateWithoutWidgetsInput>
+    create: XOR<IntegrationCreateWithoutWidgetsInput, IntegrationUncheckedCreateWithoutWidgetsInput>
+    where?: IntegrationWhereInput
+  }
+
+  export type IntegrationUpdateToOneWithWhereWithoutWidgetsInput = {
+    where?: IntegrationWhereInput
+    data: XOR<IntegrationUpdateWithoutWidgetsInput, IntegrationUncheckedUpdateWithoutWidgetsInput>
+  }
+
+  export type IntegrationUpdateWithoutWidgetsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type IntegrationUncheckedUpdateWithoutWidgetsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type WidgetCreateManyIntegrationInput = {
+    id?: string
+    slug: string
+    layout?: string
+  }
+
+  export type WidgetUpdateWithoutIntegrationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    layout?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type WidgetUncheckedUpdateWithoutIntegrationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    layout?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type WidgetUncheckedUpdateManyWithoutIntegrationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    layout?: StringFieldUpdateOperationsInput | string
+  }
+
   export type AccountCreateManyUserInput = {
     type: string
     provider: string
@@ -8630,6 +11308,10 @@ export namespace Prisma {
    * Aliases for legacy arg types
    */
     /**
+     * @deprecated Use IntegrationCountOutputTypeDefaultArgs instead
+     */
+    export type IntegrationCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = IntegrationCountOutputTypeDefaultArgs<ExtArgs>
+    /**
      * @deprecated Use UserCountOutputTypeDefaultArgs instead
      */
     export type UserCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -8650,9 +11332,17 @@ export namespace Prisma {
      */
     export type AuthenticatorArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = AuthenticatorDefaultArgs<ExtArgs>
     /**
+     * @deprecated Use IntegrationDefaultArgs instead
+     */
+    export type IntegrationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = IntegrationDefaultArgs<ExtArgs>
+    /**
      * @deprecated Use UserDefaultArgs instead
      */
     export type UserArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = UserDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use WidgetDefaultArgs instead
+     */
+    export type WidgetArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = WidgetDefaultArgs<ExtArgs>
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany
