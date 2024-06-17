@@ -3,7 +3,7 @@ import { fontFamily } from "tailwindcss/defaultTheme";
 
 /** @type {import('tailwindcss').Config} */
 export default {
-  darkMode: ["class"],
+  darkMode: ["selector", '[data-mode="dark"]'],
   content: ["src/**/*.{ts,tsx}"],
   theme: {
     container: {
@@ -55,6 +55,7 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
+        header: ["var(--font-header)", ...fontFamily.serif],
         sans: ["var(--font-sans)", ...fontFamily.sans],
       },
       keyframes: {

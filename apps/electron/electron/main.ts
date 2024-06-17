@@ -1,13 +1,11 @@
 import { BrowserWindow, app } from "electron";
 import windowStateKeeper, { type State } from "electron-window-state";
-import { createRequire } from "node:module";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-import store, { sqlite } from "./store";
+import store, { db } from "./store";
 import { getNativeTheme } from "./theme";
 
-const require = createRequire(import.meta.url);
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // The built directory structure
@@ -21,7 +19,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 // │
 process.env.APP_ROOT = path.join(__dirname, "..");
 
-const MIN_WIDTH = 1280;
+const MIN_WIDTH = 960;
 const MIN_HEIGHT = 720;
 
 // 🚧 Use ['ENV_NAME'] avoid vite:define plugin - Vite@2.x
@@ -38,9 +36,7 @@ let mainWindowState: State;
 
 function createWindow() {
   const initialTheme = store.get("theme");
-  const systemTheme = getNativeTheme();
-  console.log(initialTheme, systemTheme);
-  sqlite.integration.findMany().then(console.log);
+  db.integration.findMany().then(console.log);
 
   mainWindowState = windowStateKeeper({
     defaultWidth: MIN_WIDTH,
@@ -65,6 +61,7 @@ function createWindow() {
   // Test active push message to Renderer-process.
   win.webContents.on("did-finish-load", () => {
     win?.webContents.send("main-process-message", new Date().toLocaleString());
+    win?.webContents.send("main-process-message", getNativeTheme());
   });
 
   if (VITE_DEV_SERVER_URL) {

@@ -1,9 +1,13 @@
 import "./App.css";
+import Container from "./components/layout/container";
+import Debug from "./components/singletons/Debug";
 
 function App() {
   return (
     <>
-      <div className="h-full w-full text-blue-400">Tailwind is set up</div>
+      <h1>twona 🐟</h1>
+      <Container>Create an integration.</Container>
+      <Debug />
     </>
   );
 }

@@ -27,8 +27,8 @@ const schema: Schema<TwonaStoreSchema> = {
 const store = new Store<TwonaStoreSchema>({
   schema,
 });
-const sqlite = new sqlitePrisma.PrismaClient();
+const db = new sqlitePrisma.PrismaClient();
 
-export { sqlite };
+export { db };
 
 export default store;

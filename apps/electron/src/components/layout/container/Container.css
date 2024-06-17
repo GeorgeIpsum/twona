@@ -1,0 +1,28 @@
+.container {
+  box-shadow:
+  4px 4px 20px 0px rgba(111, 140, 176, 0.41),
+  -6px -6px 20px 0px #fff,
+  2px 2px 4px 0px rgba(114, 142, 171, 0.1);
+
+  @apply relative rounded box-border border-2 border-solid border-transparent bg-secondary bg-clip-padding;
+}
+
+:is([data-mode="dark"]) .container {
+  box-shadow:
+    4px 4px 20px 0px rgba(13, 24, 50, 0.11),
+    -6px -6px 20px 0px #03011aaa,
+    2px 2px 4px 0px rgba(51, 64, 77, 0.1);
+}
+
+.container::before {
+  content: "";
+  background: linear-gradient(to bottom, #ffffffff, #ffffff00),
+    linear-gradient(to bottom right, #ffffff2c, #d6e3f3dc);
+  @apply absolute bottom-0 left-0 right-0 top-0 isolate -z-10 -m-[2px] rounded-[inherit];
+}
+
+:is([data-mode="dark"]) .container::before {
+  /* FIXME: i made literally all of this up */
+  background: linear-gradient(to bottom, #000000aa, #00000000),
+    linear-gradient(to bottom left, #1023377c, #050c2a2c);
+}

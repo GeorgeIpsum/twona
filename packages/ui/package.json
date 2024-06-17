@@ -6,6 +6,7 @@
     "dist"
   ],
   "scripts": {
+    "build": "tsc",
     "lint": "eslint . --fix",
     "generate:component": "turbo gen react-component"
   },
