@@ -20,7 +20,7 @@ function App() {
 
   return (
     <>
-      <h1>twona</h1>
+      <h1 className="select-none">twona</h1>
       <h2>Create an integration.</h2>
       <Container>
         <div className="flex items-center justify-start gap-2">
@@ -29,7 +29,7 @@ function App() {
             : integrations.map((integration) => (
                 <div
                   key={integration.id}
-                  className="flex h-28 w-28 cursor-pointer flex-col items-center justify-center gap-2 rounded border-2 border-slate-950 bg-slate-950 p-2 transition-colors duration-200 ease-in-out hover:border-slate-200/20 hover:bg-slate-950/80"
+                  className="flex h-28 w-28 cursor-pointer flex-col items-center justify-center gap-2 rounded border-2 border-violet-950/20 bg-violet-950/10 p-2 shadow-none shadow-slate-400/40 transition-all duration-200 ease-in-out hover:border-slate-200/20 hover:bg-slate-950/80 hover:shadow-sm"
                 >
                   {integration.imageUrl && (
                     <img height="60" width="60" src={integration.imageUrl} />
