@@ -162,6 +162,7 @@ exports.Prisma.IntegrationScalarFieldEnum = {
   name: 'name',
   type: 'type',
   url: 'url',
+  imageUrl: 'imageUrl',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };

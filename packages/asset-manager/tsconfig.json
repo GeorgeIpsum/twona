@@ -1,0 +1,27 @@
+{
+  "extends": "@twona/typescript-config/node.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "declaration": false,
+    "isolatedModules": false,
+    "declarationMap": false,
+    "esModuleInterop": true,
+    "outDir": "./dist",
+    "paths": {
+      "~/*": [
+        "./src/*"
+      ]
+    }
+  },
+  "include": [
+    "src",
+    "*.d.ts",
+    "*.config.mjs"
+  ],
+  "exclude": [
+    "dist",
+    "turbo"
+  ],
+}

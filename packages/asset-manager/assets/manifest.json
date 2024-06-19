@@ -1,0 +1,8 @@
+{
+  "integrations": [
+    {
+      "id": "spotify",
+      "image": "spotify.png"
+    }
+  ]
+}

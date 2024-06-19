@@ -1,10 +1,12 @@
+import { registerIpcMain } from "@egoist/tipc/main";
 import { BrowserWindow, app } from "electron";
 import windowStateKeeper, { type State } from "electron-window-state";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-import store, { db } from "./store";
+import store from "./store";
 import { getNativeTheme } from "./theme";
+import { router } from "./tipc";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -19,6 +21,8 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 // │
 process.env.APP_ROOT = path.join(__dirname, "..");
 
+registerIpcMain(router);
+
 const MIN_WIDTH = 960;
 const MIN_HEIGHT = 720;
 
@@ -32,11 +36,23 @@ process.env.VITE_PUBLIC = VITE_DEV_SERVER_URL
   : RENDERER_DIST;
 
 let win: BrowserWindow | null;
+let splash: BrowserWindow | null;
 let mainWindowState: State;
 
 function createWindow() {
+  splash = new BrowserWindow({
+    width: 450,
+    height: 300,
+    transparent: false,
+    frame: false,
+    alwaysOnTop: true,
+  });
+
+  splash.loadFile("splash.html");
+  splash.center();
+  splash.show();
+
   const initialTheme = store.get("theme");
-  db.integration.findMany().then(console.log);
 
   mainWindowState = windowStateKeeper({
     defaultWidth: MIN_WIDTH,
@@ -56,12 +72,17 @@ function createWindow() {
     width: mainWindowState.width,
     height: mainWindowState.height,
     frame: false,
+    show: false,
   });
 
   // Test active push message to Renderer-process.
   win.webContents.on("did-finish-load", () => {
     win?.webContents.send("main-process-message", new Date().toLocaleString());
     win?.webContents.send("main-process-message", getNativeTheme());
+    setTimeout(() => {
+      splash?.close();
+      win?.show();
+    }, 1000);
   });
 
   if (VITE_DEV_SERVER_URL) {
@@ -79,6 +100,7 @@ app.on("window-all-closed", () => {
   if (process.platform !== "darwin") {
     app.quit();
     win = null;
+    splash = null;
   }
 });
 

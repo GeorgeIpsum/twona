@@ -170,6 +170,7 @@ exports.Prisma.IntegrationScalarFieldEnum = {
   name: 'name',
   type: 'type',
   url: 'url',
+  imageUrl: 'imageUrl',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -242,7 +243,8 @@ exports.Prisma.IntegrationOrderByRelevanceFieldEnum = {
   id: 'id',
   name: 'name',
   type: 'type',
-  url: 'url'
+  url: 'url',
+  imageUrl: 'imageUrl'
 };
 
 exports.Prisma.UserOrderByRelevanceFieldEnum = {

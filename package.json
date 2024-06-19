@@ -35,7 +35,8 @@
       "@auth/express@0.5.5": "patches/@auth__express@0.5.5.patch",
       "@auth/core@0.31.0": "patches/@auth__core@0.31.0.patch",
       "@auth/core@0.32.0": "patches/@auth__core@0.32.0.patch",
-      "@auth/prisma-adapter@2.2.0": "patches/@auth__prisma-adapter@2.2.0.patch"
+      "@auth/prisma-adapter@2.2.0": "patches/@auth__prisma-adapter@2.2.0.patch",
+      "@egoist/tipc@0.3.1": "patches/@egoist__tipc@0.3.1.patch"
     }
   }
 }

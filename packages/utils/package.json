@@ -1,0 +1,24 @@
+{
+  "name": "utils",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --minify --dts --format cjs,esm --out-dir dist"
+  },
+  "devDependencies": {
+    "@tilli-pro/eslint-config": "^2.0.2",
+    "@twona/typescript-config": "workspace:*",
+    "@types/node": "^20.11.24",
+    "tsup": "^8.0.2",
+    "typescript": "^5.4.5"
+  }
+}

@@ -3,6 +3,7 @@ model Integration {
   name      String   @unique
   type      String   @default("REALTIME") // ENUM THAT IS EITHER "REALTIME" OR "SUMMARY"
   url       String
+  imageUrl  String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 

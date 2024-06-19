@@ -1,7 +1,5 @@
 import { contextBridge, ipcRenderer } from "electron";
 
-import { Theme, getNativeTheme, setNativeTheme } from "./theme";
-
 // --------- Expose some API to the Renderer process ---------
 contextBridge.exposeInMainWorld("ipcRenderer", {
   on(...args: Parameters<typeof ipcRenderer.on>) {
@@ -25,13 +23,4 @@ contextBridge.exposeInMainWorld("ipcRenderer", {
 
   // You can expose other APTs you need here.
   // ...
-});
-
-contextBridge.exposeInMainWorld("theme", {
-  get() {
-    return getNativeTheme();
-  },
-  set(theme: Theme) {
-    return setNativeTheme(theme);
-  },
 });

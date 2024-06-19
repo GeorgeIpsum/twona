@@ -1,0 +1,20 @@
+diff --git a/package.json b/package.json
+index 1b33fbda0307b7d61052108bfffa24e5cfa3aed1..de9c9f8cc8a166dc99293760c312233a79b8f80b 100644
+--- a/package.json
++++ b/package.json
+@@ -24,11 +24,13 @@
+   "exports": {
+     "./main": {
+       "require": "./dist/main.cjs",
+-      "default": "./dist/main.js"
++      "default": "./dist/main.js",
++      "types": "./types/main.d.ts"
+     },
+     "./renderer": {
+       "require": "./dist/renderer.cjs",
+-      "default": "./dist/renderer.js"
++      "default": "./dist/renderer.js",
++      "types": "./types/renderer.d.ts"
+     },
+     "./react-query": {
+       "require": "./dist/react-query.cjs",

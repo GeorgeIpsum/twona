@@ -5437,6 +5437,7 @@ export namespace Prisma {
     name: string | null
     type: string | null
     url: string | null
+    imageUrl: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -5446,6 +5447,7 @@ export namespace Prisma {
     name: string | null
     type: string | null
     url: string | null
+    imageUrl: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -5455,6 +5457,7 @@ export namespace Prisma {
     name: number
     type: number
     url: number
+    imageUrl: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -5466,6 +5469,7 @@ export namespace Prisma {
     name?: true
     type?: true
     url?: true
+    imageUrl?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -5475,6 +5479,7 @@ export namespace Prisma {
     name?: true
     type?: true
     url?: true
+    imageUrl?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -5484,6 +5489,7 @@ export namespace Prisma {
     name?: true
     type?: true
     url?: true
+    imageUrl?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -5566,6 +5572,7 @@ export namespace Prisma {
     name: string
     type: string
     url: string
+    imageUrl: string | null
     createdAt: Date
     updatedAt: Date
     _count: IntegrationCountAggregateOutputType | null
@@ -5592,6 +5599,7 @@ export namespace Prisma {
     name?: boolean
     type?: boolean
     url?: boolean
+    imageUrl?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     widgets?: boolean | Integration$widgetsArgs<ExtArgs>
@@ -5603,6 +5611,7 @@ export namespace Prisma {
     name?: boolean
     type?: boolean
     url?: boolean
+    imageUrl?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["integration"]>
@@ -5612,6 +5621,7 @@ export namespace Prisma {
     name?: boolean
     type?: boolean
     url?: boolean
+    imageUrl?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
@@ -5632,6 +5642,7 @@ export namespace Prisma {
       name: string
       type: string
       url: string
+      imageUrl: string | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["integration"]>
@@ -6058,6 +6069,7 @@ export namespace Prisma {
     readonly name: FieldRef<"Integration", 'String'>
     readonly type: FieldRef<"Integration", 'String'>
     readonly url: FieldRef<"Integration", 'String'>
+    readonly imageUrl: FieldRef<"Integration", 'String'>
     readonly createdAt: FieldRef<"Integration", 'DateTime'>
     readonly updatedAt: FieldRef<"Integration", 'DateTime'>
   }
@@ -8466,6 +8478,7 @@ export namespace Prisma {
     name: 'name',
     type: 'type',
     url: 'url',
+    imageUrl: 'imageUrl',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -8832,6 +8845,7 @@ export namespace Prisma {
     name?: StringFilter<"Integration"> | string
     type?: StringFilter<"Integration"> | string
     url?: StringFilter<"Integration"> | string
+    imageUrl?: StringNullableFilter<"Integration"> | string | null
     createdAt?: DateTimeFilter<"Integration"> | Date | string
     updatedAt?: DateTimeFilter<"Integration"> | Date | string
     widgets?: WidgetListRelationFilter
@@ -8842,6 +8856,7 @@ export namespace Prisma {
     name?: SortOrder
     type?: SortOrder
     url?: SortOrder
+    imageUrl?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     widgets?: WidgetOrderByRelationAggregateInput
@@ -8855,6 +8870,7 @@ export namespace Prisma {
     NOT?: IntegrationWhereInput | IntegrationWhereInput[]
     type?: StringFilter<"Integration"> | string
     url?: StringFilter<"Integration"> | string
+    imageUrl?: StringNullableFilter<"Integration"> | string | null
     createdAt?: DateTimeFilter<"Integration"> | Date | string
     updatedAt?: DateTimeFilter<"Integration"> | Date | string
     widgets?: WidgetListRelationFilter
@@ -8865,6 +8881,7 @@ export namespace Prisma {
     name?: SortOrder
     type?: SortOrder
     url?: SortOrder
+    imageUrl?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: IntegrationCountOrderByAggregateInput
@@ -8880,6 +8897,7 @@ export namespace Prisma {
     name?: StringWithAggregatesFilter<"Integration"> | string
     type?: StringWithAggregatesFilter<"Integration"> | string
     url?: StringWithAggregatesFilter<"Integration"> | string
+    imageUrl?: StringNullableWithAggregatesFilter<"Integration"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Integration"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Integration"> | Date | string
   }
@@ -9294,6 +9312,7 @@ export namespace Prisma {
     name: string
     type?: string
     url: string
+    imageUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     widgets?: WidgetCreateNestedManyWithoutIntegrationInput
@@ -9304,6 +9323,7 @@ export namespace Prisma {
     name: string
     type?: string
     url: string
+    imageUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     widgets?: WidgetUncheckedCreateNestedManyWithoutIntegrationInput
@@ -9314,6 +9334,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     widgets?: WidgetUpdateManyWithoutIntegrationNestedInput
@@ -9324,6 +9345,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     widgets?: WidgetUncheckedUpdateManyWithoutIntegrationNestedInput
@@ -9334,6 +9356,7 @@ export namespace Prisma {
     name: string
     type?: string
     url: string
+    imageUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -9343,6 +9366,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -9352,6 +9376,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -9819,6 +9844,7 @@ export namespace Prisma {
     name?: SortOrder
     type?: SortOrder
     url?: SortOrder
+    imageUrl?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -9828,6 +9854,7 @@ export namespace Prisma {
     name?: SortOrder
     type?: SortOrder
     url?: SortOrder
+    imageUrl?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -9837,6 +9864,7 @@ export namespace Prisma {
     name?: SortOrder
     type?: SortOrder
     url?: SortOrder
+    imageUrl?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -10840,6 +10868,7 @@ export namespace Prisma {
     name: string
     type?: string
     url: string
+    imageUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -10849,6 +10878,7 @@ export namespace Prisma {
     name: string
     type?: string
     url: string
+    imageUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -10874,6 +10904,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -10883,6 +10914,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

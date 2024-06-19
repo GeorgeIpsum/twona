@@ -66,6 +66,15 @@
     "electron#server-up": {
       "cache": false,
       "persistent": false
+    },
+    "asset-manager#build": {
+      "cache": true,
+      "persistent": false,
+      "dependsOn": ["^utils#build"]
+    },
+    "utils#build": {
+      "cache": true,
+      "persistent": false
     }
   }
 }

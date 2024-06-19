@@ -28,8 +28,10 @@ async function seed(client: (typeof clients)[number]) {
     const { integrations } = integrationInput;
     for (const integration of integrations) {
       // @ts-expect-error its aight
-      await client.integration.create({
-        data: integration,
+      await client.integration.upsert({
+        update: integration,
+        create: integration,
+        where: { name: integration.name }
       });
     }
   }

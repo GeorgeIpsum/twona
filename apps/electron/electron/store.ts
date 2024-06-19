@@ -4,7 +4,7 @@ import { createRequire } from "node:module";
 import { Theme } from "./theme";
 
 const require = createRequire(import.meta.url);
-const sqlitePrisma = require("db/sqlite");
+const sqlitePrisma: typeof import("db/sqlite") = require("db/sqlite");
 
 export interface TwonaStoreSchema {
   theme: Theme;

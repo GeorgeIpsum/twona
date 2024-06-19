@@ -4,7 +4,8 @@
  
 @layer base {
   :root {
-    --font-header: "Playfair Display";
+    --font-fancy: "Playfair Display";
+    --font-header: "Danfo";
     --font-sans: "Ubuntu";
     
     --background: 0 0% 100%;
@@ -77,11 +78,11 @@
   * {
     @apply border-border;
   }
-  h1,h2,h3 {
-    @apply font-header font-semibold;
+  h2,h3 {
+    @apply font-fancy font-semibold;
   }
   h1 {
-    @apply text-4xl font-bold;
+    @apply font-header text-4xl font-bold;
   }
   h2 {
     @apply text-2xl;

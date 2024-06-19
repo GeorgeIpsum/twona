@@ -20,7 +20,7 @@ export const VerificationTokenScalarFieldEnumSchema = z.enum(['identifier','toke
 
 export const AuthenticatorScalarFieldEnumSchema = z.enum(['credentialID','userId','providerAccountId','credentialPublicKey','counter','credentialDeviceType','credentialBackedUp','transports']);
 
-export const IntegrationScalarFieldEnumSchema = z.enum(['id','name','type','url','createdAt','updatedAt']);
+export const IntegrationScalarFieldEnumSchema = z.enum(['id','name','type','url','imageUrl','createdAt','updatedAt']);
 
 export const UserScalarFieldEnumSchema = z.enum(['id','name','email','emailVerified','image','createdAt','updatedAt']);
 
@@ -107,6 +107,7 @@ export const IntegrationSchema = z.object({
   name: z.string(),
   type: z.string(),
   url: z.string(),
+  imageUrl: z.string().nullable(),
   createdAt: z.coerce.date(),
   updatedAt: z.coerce.date(),
 })
@@ -255,6 +256,7 @@ export const IntegrationSelectSchema: z.ZodType<Prisma.IntegrationSelect> = z.ob
   name: z.boolean().optional(),
   type: z.boolean().optional(),
   url: z.boolean().optional(),
+  imageUrl: z.boolean().optional(),
   createdAt: z.boolean().optional(),
   updatedAt: z.boolean().optional(),
   widgets: z.union([z.boolean(),z.lazy(() => WidgetFindManyArgsSchema)]).optional(),
@@ -623,6 +625,7 @@ export const IntegrationWhereInputSchema: z.ZodType<Prisma.IntegrationWhereInput
   name: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
   type: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
   url: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
+  imageUrl: z.union([ z.lazy(() => StringNullableFilterSchema),z.string() ]).optional().nullable(),
   createdAt: z.union([ z.lazy(() => DateTimeFilterSchema),z.coerce.date() ]).optional(),
   updatedAt: z.union([ z.lazy(() => DateTimeFilterSchema),z.coerce.date() ]).optional(),
   widgets: z.lazy(() => WidgetListRelationFilterSchema).optional()
@@ -633,6 +636,7 @@ export const IntegrationOrderByWithRelationInputSchema: z.ZodType<Prisma.Integra
   name: z.lazy(() => SortOrderSchema).optional(),
   type: z.lazy(() => SortOrderSchema).optional(),
   url: z.lazy(() => SortOrderSchema).optional(),
+  imageUrl: z.union([ z.lazy(() => SortOrderSchema),z.lazy(() => SortOrderInputSchema) ]).optional(),
   createdAt: z.lazy(() => SortOrderSchema).optional(),
   updatedAt: z.lazy(() => SortOrderSchema).optional(),
   widgets: z.lazy(() => WidgetOrderByRelationAggregateInputSchema).optional()
@@ -658,6 +662,7 @@ export const IntegrationWhereUniqueInputSchema: z.ZodType<Prisma.IntegrationWher
   NOT: z.union([ z.lazy(() => IntegrationWhereInputSchema),z.lazy(() => IntegrationWhereInputSchema).array() ]).optional(),
   type: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
   url: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
+  imageUrl: z.union([ z.lazy(() => StringNullableFilterSchema),z.string() ]).optional().nullable(),
   createdAt: z.union([ z.lazy(() => DateTimeFilterSchema),z.coerce.date() ]).optional(),
   updatedAt: z.union([ z.lazy(() => DateTimeFilterSchema),z.coerce.date() ]).optional(),
   widgets: z.lazy(() => WidgetListRelationFilterSchema).optional()
@@ -668,6 +673,7 @@ export const IntegrationOrderByWithAggregationInputSchema: z.ZodType<Prisma.Inte
   name: z.lazy(() => SortOrderSchema).optional(),
   type: z.lazy(() => SortOrderSchema).optional(),
   url: z.lazy(() => SortOrderSchema).optional(),
+  imageUrl: z.union([ z.lazy(() => SortOrderSchema),z.lazy(() => SortOrderInputSchema) ]).optional(),
   createdAt: z.lazy(() => SortOrderSchema).optional(),
   updatedAt: z.lazy(() => SortOrderSchema).optional(),
   _count: z.lazy(() => IntegrationCountOrderByAggregateInputSchema).optional(),
@@ -683,6 +689,7 @@ export const IntegrationScalarWhereWithAggregatesInputSchema: z.ZodType<Prisma.I
   name: z.union([ z.lazy(() => StringWithAggregatesFilterSchema),z.string() ]).optional(),
   type: z.union([ z.lazy(() => StringWithAggregatesFilterSchema),z.string() ]).optional(),
   url: z.union([ z.lazy(() => StringWithAggregatesFilterSchema),z.string() ]).optional(),
+  imageUrl: z.union([ z.lazy(() => StringNullableWithAggregatesFilterSchema),z.string() ]).optional().nullable(),
   createdAt: z.union([ z.lazy(() => DateTimeWithAggregatesFilterSchema),z.coerce.date() ]).optional(),
   updatedAt: z.union([ z.lazy(() => DateTimeWithAggregatesFilterSchema),z.coerce.date() ]).optional(),
 }).strict();
@@ -1121,6 +1128,7 @@ export const IntegrationCreateInputSchema: z.ZodType<Prisma.IntegrationCreateInp
   name: z.string(),
   type: z.string().optional(),
   url: z.string(),
+  imageUrl: z.string().optional().nullable(),
   createdAt: z.coerce.date().optional(),
   updatedAt: z.coerce.date().optional(),
   widgets: z.lazy(() => WidgetCreateNestedManyWithoutIntegrationInputSchema).optional()
@@ -1131,6 +1139,7 @@ export const IntegrationUncheckedCreateInputSchema: z.ZodType<Prisma.Integration
   name: z.string(),
   type: z.string().optional(),
   url: z.string(),
+  imageUrl: z.string().optional().nullable(),
   createdAt: z.coerce.date().optional(),
   updatedAt: z.coerce.date().optional(),
   widgets: z.lazy(() => WidgetUncheckedCreateNestedManyWithoutIntegrationInputSchema).optional()
@@ -1141,6 +1150,7 @@ export const IntegrationUpdateInputSchema: z.ZodType<Prisma.IntegrationUpdateInp
   name: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   type: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   url: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  imageUrl: z.union([ z.string(),z.lazy(() => NullableStringFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   createdAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
   updatedAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
   widgets: z.lazy(() => WidgetUpdateManyWithoutIntegrationNestedInputSchema).optional()
@@ -1151,6 +1161,7 @@ export const IntegrationUncheckedUpdateInputSchema: z.ZodType<Prisma.Integration
   name: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   type: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   url: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  imageUrl: z.union([ z.string(),z.lazy(() => NullableStringFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   createdAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
   updatedAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
   widgets: z.lazy(() => WidgetUncheckedUpdateManyWithoutIntegrationNestedInputSchema).optional()
@@ -1161,6 +1172,7 @@ export const IntegrationCreateManyInputSchema: z.ZodType<Prisma.IntegrationCreat
   name: z.string(),
   type: z.string().optional(),
   url: z.string(),
+  imageUrl: z.string().optional().nullable(),
   createdAt: z.coerce.date().optional(),
   updatedAt: z.coerce.date().optional()
 }).strict();
@@ -1170,6 +1182,7 @@ export const IntegrationUpdateManyMutationInputSchema: z.ZodType<Prisma.Integrat
   name: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   type: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   url: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  imageUrl: z.union([ z.string(),z.lazy(() => NullableStringFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   createdAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
   updatedAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
 }).strict();
@@ -1179,6 +1192,7 @@ export const IntegrationUncheckedUpdateManyInputSchema: z.ZodType<Prisma.Integra
   name: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   type: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   url: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  imageUrl: z.union([ z.string(),z.lazy(() => NullableStringFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   createdAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
   updatedAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
 }).strict();
@@ -1646,6 +1660,7 @@ export const IntegrationCountOrderByAggregateInputSchema: z.ZodType<Prisma.Integ
   name: z.lazy(() => SortOrderSchema).optional(),
   type: z.lazy(() => SortOrderSchema).optional(),
   url: z.lazy(() => SortOrderSchema).optional(),
+  imageUrl: z.lazy(() => SortOrderSchema).optional(),
   createdAt: z.lazy(() => SortOrderSchema).optional(),
   updatedAt: z.lazy(() => SortOrderSchema).optional()
 }).strict();
@@ -1655,6 +1670,7 @@ export const IntegrationMaxOrderByAggregateInputSchema: z.ZodType<Prisma.Integra
   name: z.lazy(() => SortOrderSchema).optional(),
   type: z.lazy(() => SortOrderSchema).optional(),
   url: z.lazy(() => SortOrderSchema).optional(),
+  imageUrl: z.lazy(() => SortOrderSchema).optional(),
   createdAt: z.lazy(() => SortOrderSchema).optional(),
   updatedAt: z.lazy(() => SortOrderSchema).optional()
 }).strict();
@@ -1664,6 +1680,7 @@ export const IntegrationMinOrderByAggregateInputSchema: z.ZodType<Prisma.Integra
   name: z.lazy(() => SortOrderSchema).optional(),
   type: z.lazy(() => SortOrderSchema).optional(),
   url: z.lazy(() => SortOrderSchema).optional(),
+  imageUrl: z.lazy(() => SortOrderSchema).optional(),
   createdAt: z.lazy(() => SortOrderSchema).optional(),
   updatedAt: z.lazy(() => SortOrderSchema).optional()
 }).strict();
@@ -2667,6 +2684,7 @@ export const IntegrationCreateWithoutWidgetsInputSchema: z.ZodType<Prisma.Integr
   name: z.string(),
   type: z.string().optional(),
   url: z.string(),
+  imageUrl: z.string().optional().nullable(),
   createdAt: z.coerce.date().optional(),
   updatedAt: z.coerce.date().optional()
 }).strict();
@@ -2676,6 +2694,7 @@ export const IntegrationUncheckedCreateWithoutWidgetsInputSchema: z.ZodType<Pris
   name: z.string(),
   type: z.string().optional(),
   url: z.string(),
+  imageUrl: z.string().optional().nullable(),
   createdAt: z.coerce.date().optional(),
   updatedAt: z.coerce.date().optional()
 }).strict();
@@ -2701,6 +2720,7 @@ export const IntegrationUpdateWithoutWidgetsInputSchema: z.ZodType<Prisma.Integr
   name: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   type: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   url: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  imageUrl: z.union([ z.string(),z.lazy(() => NullableStringFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   createdAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
   updatedAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
 }).strict();
@@ -2710,6 +2730,7 @@ export const IntegrationUncheckedUpdateWithoutWidgetsInputSchema: z.ZodType<Pris
   name: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   type: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   url: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  imageUrl: z.union([ z.string(),z.lazy(() => NullableStringFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   createdAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
   updatedAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
 }).strict();

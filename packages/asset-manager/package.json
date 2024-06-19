@@ -1,0 +1,28 @@
+{
+  "name": "asset-manager",
+  "version": "0.0.0",
+  "main": "dist/index.js",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "tsc",
+    "prestart": "pnpm build",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "cloudinary": "^2.2.0",
+    "commander": "^12.1.0",
+    "db": "workspace:*",
+    "dotenv": "^16.4.5",
+    "ora": "^8.0.1",
+    "prompts": "^2.4.2",
+    "utils": "workspace:*"
+  },
+  "devDependencies": {
+    "@tilli-pro/eslint-config": "^2.0.2",
+    "@twona/typescript-config": "workspace:*",
+    "@types/node": "^20.11.24",
+    "typescript": "^5.4.5"
+  }
+}
