@@ -188,7 +188,10 @@ export const attachLogger = httpLogger({
     const existing = req.headers["x-request-id"] ?? req.id;
     if (existing) return existing;
     if (req.url && req.url.length > 0) {
-      const parsedUrl = req.url?.split("?")[0]?.replace("/", "");
+      const parsedUrl = req.url
+        ?.split("?")[0]
+        ?.replace("/", "")
+        .replace(/\//g, ".");
       const id = nanoid(8);
       res.setHeader("x-request-id", id);
       return `${parsedUrl}|${req.method ?? "NO_METHOD"}|${id}`;

@@ -39,7 +39,9 @@ async function seed(client: (typeof clients)[number]) {
 
 main()
   .catch(console.error)
-  .finally(() => {
-    console.info("🌱 Seeding complete.");
+  .finally(async () => {
+    // @ts-expect-error ???
+    const integrations = await Promise.all(clients.map(client => client.integration.findMany()));
+    console.info("🌱  Seeded integrations:", integrations);
     process.exit(0);
   });

@@ -75,6 +75,17 @@
     "utils#build": {
       "cache": true,
       "persistent": false
+    },
+    "asset-manager#start": {
+      "cache": false,
+      "persistent": false,
+      "dependsOn": ["^asset-manager#build"]
+    },
+    "seed": {
+      "cache": false,
+      "persistent": false,
+      "env": ["PG_DATABASE_URL", "SL_DATABASE_URL"],
+      "dependsOn": ["^db#migrate", "^asset-manager#start"]
     }
   }
 }

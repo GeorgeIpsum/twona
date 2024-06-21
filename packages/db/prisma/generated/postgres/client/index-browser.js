@@ -171,6 +171,7 @@ exports.Prisma.IntegrationScalarFieldEnum = {
   type: 'type',
   url: 'url',
   imageUrl: 'imageUrl',
+  widgetsEnabled: 'widgetsEnabled',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };

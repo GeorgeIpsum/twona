@@ -1,3 +1,22 @@
+diff --git a/lib/pages/index.js b/lib/pages/index.js
+index 0ce1972bd1c529938c1c467b9f7a21ea86bdedea..4de213d23d42190c3962a0917413c70fbdcb66b9 100644
+--- a/lib/pages/index.js
++++ b/lib/pages/index.js
+@@ -1,4 +1,4 @@
+-import { renderToString } from "preact-render-to-string";
++import preact from "preact-render-to-string";
+ import ErrorPage from "./error.js";
+ import SigninPage from "./signin.js";
+ import SignoutPage from "./signout.js";
+@@ -10,7 +10,7 @@ function send({ html, title, status, cookies, theme, headTags, }) {
+         cookies,
+         status,
+         headers: { "Content-Type": "text/html" },
+-        body: `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>${css}</style><title>${title}</title>${headTags ?? ""}</head><body class="__next-auth-theme-${theme?.colorScheme ?? "auto"}"><div class="page">${renderToString(html)}</div></body></html>`,
++        body: `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>${css}</style><title>${title}</title>${headTags ?? ""}</head><body class="__next-auth-theme-${theme?.colorScheme ?? "auto"}"><div class="page">${preact.render(html)}</div></body></html>`,
+     };
+ }
+ /**
 diff --git a/package.json b/package.json
 index 99fe3ce65838a0523323eb56fa31608bebe7dce4..70e0a5ec7029ec064026843df11f87fbcfe7e9c8 100644
 --- a/package.json

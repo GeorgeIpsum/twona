@@ -6,7 +6,6 @@
   "private": true,
   "scripts": {
     "build": "tsc",
-    "prestart": "pnpm build",
     "start": "node dist/index.js"
   },
   "dependencies": {

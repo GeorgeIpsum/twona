@@ -36,11 +36,11 @@ async function main() {
     const imageUploadResult = await cloudinary.uploader.upload(
       assetPath(image),
       {
-        public_id: `integrations/${id}/image`,
+        public_id: `integrations/${id}/icon`,
         overwrite: true,
         access_mode: "public",
         colors: true,
-        folder: "twona/integrations",
+        folder: "twona",
       },
     );
 

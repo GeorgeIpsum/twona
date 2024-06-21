@@ -4,7 +4,14 @@
     {
       "name": "spotify",
       "url": "https://api.spotify.com/v1/me/player/currently-playing",
-      "imageUrl": "https://res.cloudinary.com/dqh9uy8p7/image/upload/v1718821147/twona/integrations/integrations/spotify/image.png"
+      "imageUrl": "https://res.cloudinary.com/dqh9uy8p7/image/upload/v1718821147/twona/integrations/spotify/icon.png",
+      "widgetsEnabled": true
+    },
+    {
+      "name": "twitch",
+      "url": "https://api.twitch.tv/helix/streams",
+      "imageUrl": "https://res.cloudinary.com/dqh9uy8p7/image/upload/v1718821147/twona/integrations/twitch/icon.png",
+      "widgetsEnabled": false
     }
   ]
 }

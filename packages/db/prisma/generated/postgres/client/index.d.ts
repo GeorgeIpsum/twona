@@ -5482,6 +5482,7 @@ export namespace Prisma {
     type: string | null
     url: string | null
     imageUrl: string | null
+    widgetsEnabled: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -5492,6 +5493,7 @@ export namespace Prisma {
     type: string | null
     url: string | null
     imageUrl: string | null
+    widgetsEnabled: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -5502,6 +5504,7 @@ export namespace Prisma {
     type: number
     url: number
     imageUrl: number
+    widgetsEnabled: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -5514,6 +5517,7 @@ export namespace Prisma {
     type?: true
     url?: true
     imageUrl?: true
+    widgetsEnabled?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -5524,6 +5528,7 @@ export namespace Prisma {
     type?: true
     url?: true
     imageUrl?: true
+    widgetsEnabled?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -5534,6 +5539,7 @@ export namespace Prisma {
     type?: true
     url?: true
     imageUrl?: true
+    widgetsEnabled?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -5617,6 +5623,7 @@ export namespace Prisma {
     type: string
     url: string
     imageUrl: string | null
+    widgetsEnabled: boolean
     createdAt: Date
     updatedAt: Date
     _count: IntegrationCountAggregateOutputType | null
@@ -5644,6 +5651,7 @@ export namespace Prisma {
     type?: boolean
     url?: boolean
     imageUrl?: boolean
+    widgetsEnabled?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     widgets?: boolean | Integration$widgetsArgs<ExtArgs>
@@ -5656,6 +5664,7 @@ export namespace Prisma {
     type?: boolean
     url?: boolean
     imageUrl?: boolean
+    widgetsEnabled?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["integration"]>
@@ -5666,6 +5675,7 @@ export namespace Prisma {
     type?: boolean
     url?: boolean
     imageUrl?: boolean
+    widgetsEnabled?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
@@ -5687,6 +5697,7 @@ export namespace Prisma {
       type: string
       url: string
       imageUrl: string | null
+      widgetsEnabled: boolean
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["integration"]>
@@ -6114,6 +6125,7 @@ export namespace Prisma {
     readonly type: FieldRef<"Integration", 'String'>
     readonly url: FieldRef<"Integration", 'String'>
     readonly imageUrl: FieldRef<"Integration", 'String'>
+    readonly widgetsEnabled: FieldRef<"Integration", 'Boolean'>
     readonly createdAt: FieldRef<"Integration", 'DateTime'>
     readonly updatedAt: FieldRef<"Integration", 'DateTime'>
   }
@@ -8567,6 +8579,7 @@ export namespace Prisma {
     type: 'type',
     url: 'url',
     imageUrl: 'imageUrl',
+    widgetsEnabled: 'widgetsEnabled',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -9049,6 +9062,7 @@ export namespace Prisma {
     type?: StringFilter<"Integration"> | string
     url?: StringFilter<"Integration"> | string
     imageUrl?: StringNullableFilter<"Integration"> | string | null
+    widgetsEnabled?: BoolFilter<"Integration"> | boolean
     createdAt?: DateTimeFilter<"Integration"> | Date | string
     updatedAt?: DateTimeFilter<"Integration"> | Date | string
     widgets?: WidgetListRelationFilter
@@ -9060,6 +9074,7 @@ export namespace Prisma {
     type?: SortOrder
     url?: SortOrder
     imageUrl?: SortOrderInput | SortOrder
+    widgetsEnabled?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     widgets?: WidgetOrderByRelationAggregateInput
@@ -9075,6 +9090,7 @@ export namespace Prisma {
     type?: StringFilter<"Integration"> | string
     url?: StringFilter<"Integration"> | string
     imageUrl?: StringNullableFilter<"Integration"> | string | null
+    widgetsEnabled?: BoolFilter<"Integration"> | boolean
     createdAt?: DateTimeFilter<"Integration"> | Date | string
     updatedAt?: DateTimeFilter<"Integration"> | Date | string
     widgets?: WidgetListRelationFilter
@@ -9086,6 +9102,7 @@ export namespace Prisma {
     type?: SortOrder
     url?: SortOrder
     imageUrl?: SortOrderInput | SortOrder
+    widgetsEnabled?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: IntegrationCountOrderByAggregateInput
@@ -9102,6 +9119,7 @@ export namespace Prisma {
     type?: StringWithAggregatesFilter<"Integration"> | string
     url?: StringWithAggregatesFilter<"Integration"> | string
     imageUrl?: StringNullableWithAggregatesFilter<"Integration"> | string | null
+    widgetsEnabled?: BoolWithAggregatesFilter<"Integration"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"Integration"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Integration"> | Date | string
   }
@@ -9519,6 +9537,7 @@ export namespace Prisma {
     type?: string
     url: string
     imageUrl?: string | null
+    widgetsEnabled?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     widgets?: WidgetCreateNestedManyWithoutIntegrationInput
@@ -9530,6 +9549,7 @@ export namespace Prisma {
     type?: string
     url: string
     imageUrl?: string | null
+    widgetsEnabled?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     widgets?: WidgetUncheckedCreateNestedManyWithoutIntegrationInput
@@ -9541,6 +9561,7 @@ export namespace Prisma {
     type?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    widgetsEnabled?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     widgets?: WidgetUpdateManyWithoutIntegrationNestedInput
@@ -9552,6 +9573,7 @@ export namespace Prisma {
     type?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    widgetsEnabled?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     widgets?: WidgetUncheckedUpdateManyWithoutIntegrationNestedInput
@@ -9563,6 +9585,7 @@ export namespace Prisma {
     type?: string
     url: string
     imageUrl?: string | null
+    widgetsEnabled?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -9573,6 +9596,7 @@ export namespace Prisma {
     type?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    widgetsEnabled?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -9583,6 +9607,7 @@ export namespace Prisma {
     type?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    widgetsEnabled?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -10089,6 +10114,7 @@ export namespace Prisma {
     type?: SortOrder
     url?: SortOrder
     imageUrl?: SortOrder
+    widgetsEnabled?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -10099,6 +10125,7 @@ export namespace Prisma {
     type?: SortOrder
     url?: SortOrder
     imageUrl?: SortOrder
+    widgetsEnabled?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -10109,6 +10136,7 @@ export namespace Prisma {
     type?: SortOrder
     url?: SortOrder
     imageUrl?: SortOrder
+    widgetsEnabled?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -11133,6 +11161,7 @@ export namespace Prisma {
     type?: string
     url: string
     imageUrl?: string | null
+    widgetsEnabled?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -11143,6 +11172,7 @@ export namespace Prisma {
     type?: string
     url: string
     imageUrl?: string | null
+    widgetsEnabled?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -11169,6 +11199,7 @@ export namespace Prisma {
     type?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    widgetsEnabled?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -11179,6 +11210,7 @@ export namespace Prisma {
     type?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    widgetsEnabled?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

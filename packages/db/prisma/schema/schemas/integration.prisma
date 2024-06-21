@@ -1,11 +1,12 @@
 model Integration {
-  id        String   @id @default(cuid())
-  name      String   @unique
-  type      String   @default("REALTIME") // ENUM THAT IS EITHER "REALTIME" OR "SUMMARY"
-  url       String
-  imageUrl  String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id             String   @id @default(cuid())
+  name           String   @unique
+  type           String   @default("REALTIME") // ENUM THAT IS EITHER "REALTIME" OR "SUMMARY"
+  url            String
+  imageUrl       String?
+  widgetsEnabled Boolean  @default(false)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
 
   widgets Widget[]
 

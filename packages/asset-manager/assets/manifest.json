@@ -3,6 +3,10 @@
     {
       "id": "spotify",
       "image": "spotify.png"
+    },
+    {
+      "id": "twitch",
+      "image": "twitch.png"
     }
   ]
 }
