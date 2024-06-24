@@ -1,3 +1,4 @@
+import { skipCSRFCheck } from "@auth/core";
 import type { ExpressAuth } from "@auth/express";
 import battlenet from "@auth/express/providers/battlenet";
 import discord from "@auth/express/providers/discord";
@@ -22,4 +23,5 @@ export const authConfig: AuthConfig = {
     twitter,
   ],
   adapter: PrismaAdapter(db as Parameters<typeof PrismaAdapter>[0]),
+  skipCSRFCheck,
 };

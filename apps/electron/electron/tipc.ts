@@ -7,6 +7,13 @@ const t = tipc.create();
 const procedure = t.procedure;
 
 export const router = {
+  getCsrfToken: procedure.action(async () => {
+    const { csrfToken } = await fetch("http://localhost:3000/auth/csrf").then(
+      (res) => res.json(),
+    );
+
+    return csrfToken;
+  }),
   getIntegrations: procedure.action(async () => {
     return db.integration.findMany();
   }),
