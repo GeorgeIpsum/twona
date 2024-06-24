@@ -1,9 +1,7 @@
 import Store, { Schema } from "electron-store";
-import { createRequire } from "node:module";
 
 import { Theme } from "./theme";
 
-const require = createRequire(import.meta.url);
 const sqlitePrisma: typeof import("db/sqlite") = require("db/sqlite");
 
 export interface TwonaStoreSchema {
@@ -29,6 +27,6 @@ const store = new Store<TwonaStoreSchema>({
 });
 const db = new sqlitePrisma.PrismaClient();
 
-export { db };
+export { db, Store };
 
 export default store;

@@ -4,11 +4,11 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "electron-vite dev",
     "server-up": "wait-on http://localhost:3000/health && echo 'Bluefin: 🛜 LIVE'",
-    "build": "tsc && vite build && electron-builder",
+    "build": "electron-vite build && cp -r out/renderer html",
     "lint": "eslint . --fix",
-    "preview": "vite preview",
+    "start": "electron-vite preview",
     "postinstall": "node node_modules/electron/install.js && electron-builder install-app-deps"
   },
   "dependencies": {
@@ -16,6 +16,8 @@
     "@dnd-kit/modifiers": "^7.0.0",
     "@dnd-kit/sortable": "^8.0.0",
     "@egoist/tipc": "^0.3.1",
+    "@electron-toolkit/preload": "^3.0.1",
+    "@electron-toolkit/utils": "^3.0.0",
     "@headlessui/react": "^2.0.4",
     "@trpc/client": "^10.45.2",
     "class-variance-authority": "^0.7.0",
@@ -43,7 +45,9 @@
     "mobx-utils": "^6.0.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.23.1",
     "react-window": "^1.8.10",
+    "remotedev": "^0.2.9",
     "serializr": "^3.0.2",
     "spotify-web-api-node": "^5.0.2",
     "sqlite3": "5.1.6",
@@ -54,6 +58,12 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@electron-toolkit/tsconfig": "^1.0.1",
+    "@electron/notarize": "^2.3.2",
+    "@rollup/plugin-strip": "^3.0.4",
+    "@svgr/plugin-jsx": "^8.1.0",
+    "@svgr/plugin-svgo": "^8.1.0",
+    "@svgr/rollup": "^8.1.0",
     "@tilli-pro/eslint-config": "^2.0.2",
     "@twona/typescript-config": "workspace:*",
     "@types/node": "^20.11.24",
@@ -63,6 +73,8 @@
     "autoprefixer": "^10.4.19",
     "electron": "^30.0.1",
     "electron-builder": "^24.13.3",
+    "electron-vite": "^2.3.0",
+    "madge": "^7.0.0",
     "postcss": "^8.4.38",
     "tailwindcss": "^3.4.3",
     "tailwindcss-animate": "^1.0.7",
@@ -72,8 +84,9 @@
     "vite": "^5.1.6",
     "vite-plugin-electron": "^0.28.6",
     "vite-plugin-electron-renderer": "^0.14.5",
+    "vite-plugin-svgr": "^4.2.0",
     "vite-tsconfig-paths": "^4.3.2",
     "wait-on": "^7.2.0"
   },
-  "main": "dist-electron/main.js"
+  "main": "out/main/main.js"
 }

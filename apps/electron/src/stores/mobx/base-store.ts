@@ -11,6 +11,7 @@ import {
 } from "mobx-keystone";
 
 import { BaseModelInstance, IBaseModel } from "./base-model";
+import { NSStoreName, buildRef, getStoreBaseModelName } from "./namespace";
 import { ISingletonModel, SingletonModelInstance } from "./singleton-model";
 import { AnyKV } from "./types";
 
@@ -41,6 +42,9 @@ export abstract class StoreModel<T extends TwonaModelInstance>
   }))<T>
   implements StoreProps<T>
 {
+  baseModelName = getStoreBaseModelName(this.$modelType as NSStoreName<string>);
+  ref = buildRef<T>(this.baseModelName);
+
   @computed
   get root() {
     return getRootStore(this);
@@ -48,13 +52,16 @@ export abstract class StoreModel<T extends TwonaModelInstance>
 
   @computed
   get data() {
-    return this._data.filter((d) => !this.hidden.includes(d.$modelId));
+    return this._data.filter(
+      (datum) => !this.hidden.includes(this.ref(datum.$modelId)),
+    );
   }
 
   @modelAction
   page(page = 0, chunkSize = 50) {
     const start = page * chunkSize;
     const end = start + chunkSize;
+
     if (start > this.data.length) return [];
     return this.data.slice(start, end);
   }

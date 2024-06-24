@@ -1,24 +1,13 @@
 import { registerIpcMain } from "@egoist/tipc/main";
+import { electronApp, is, optimizer } from "@electron-toolkit/utils";
 import { BrowserWindow, app } from "electron";
 import windowStateKeeper, { type State } from "electron-window-state";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
 
-import store from "./store";
-import { getNativeTheme } from "./theme";
+import store, { Store } from "./store";
+// import { getNativeTheme } from "./theme";
 import { router } from "./tipc";
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-
-// The built directory structure
-//
-// ├─┬─┬ dist
-// │ │ └── index.html
-// │ │
-// │ ├─┬ dist-electron
-// │ │ ├── main.js
-// │ │ └── preload.mjs
-// │
 process.env.APP_ROOT = path.join(__dirname, "..");
 
 registerIpcMain(router);
@@ -47,6 +36,7 @@ function createWindow() {
     frame: false,
     alwaysOnTop: true,
   });
+  Store.initRenderer();
 
   splash.loadFile("splash.html");
   splash.center();
@@ -62,7 +52,8 @@ function createWindow() {
   win = new BrowserWindow({
     icon: path.join(process.env.VITE_PUBLIC!, "electron-vite.svg"),
     webPreferences: {
-      preload: path.join(__dirname, "preload.mjs"),
+      preload: path.join(__dirname, "../preload/preload.mjs"),
+      sandbox: false,
     },
     darkTheme: initialTheme === "dark",
     x: mainWindowState.x,
@@ -77,19 +68,20 @@ function createWindow() {
 
   // Test active push message to Renderer-process.
   win.webContents.on("did-finish-load", () => {
-    win?.webContents.send("main-process-message", new Date().toLocaleString());
-    win?.webContents.send("main-process-message", getNativeTheme());
+    // win?.webContents.send("main-process-message", new Date().toLocaleString());
+    // win?.webContents.send("main-process-message", getNativeTheme());
     setTimeout(() => {
       splash?.close();
       win?.show();
     }, 1000);
   });
 
-  if (VITE_DEV_SERVER_URL) {
-    win.loadURL(VITE_DEV_SERVER_URL);
+  // HMR for renderer base on electron-vite cli.
+  // Load the remote URL for development or the local html file for production.
+  if (is.dev && process.env["ELECTRON_RENDERER_URL"]) {
+    win.loadURL(process.env["ELECTRON_RENDERER_URL"]);
   } else {
-    // win.loadFile('dist/index.html')
-    win.loadFile(path.join(RENDERER_DIST, "index.html"));
+    win.loadFile(path.join(__dirname, "../index.html"));
   }
 }
 

@@ -22,7 +22,7 @@ export const router = {
         // callbackUrl: "http://localhost:3000",
       };
 
-      const formBody = [];
+      const formBody: string[] = [];
       for (const prop in form) {
         if (Object.hasOwnProperty.call(form, prop)) {
           const encodedKey = encodeURIComponent(prop);

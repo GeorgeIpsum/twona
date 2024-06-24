@@ -1,0 +1,76 @@
+# {
+#   "$schema": "https://raw.githubusercontent.com/electron-userland/electron-builder/master/packages/app-builder-lib/scheme.json",
+#   "appId": "com.studiohmr.twona.app",
+#   "asar": true,
+#   "productName": "2NA",
+#   "directories": {
+#     "output": "release/${version}"
+#   },
+#   "files": [
+#     "dist",
+#     "dist-electron"
+#   ],
+#   "mac": {
+#     "target": [
+#       "dmg"
+#     ],
+#     "artifactName": "${productName}-Mac-${version}-Installer.${ext}"
+#   },
+#   "win": {
+#     "target": [
+#       {
+#         "target": "nsis",
+#         "arch": [
+#           "x64"
+#         ]
+#       }
+#     ],
+#     "artifactName": "${productName}-Windows-${version}-Setup.${ext}"
+#   },
+#   "nsis": {
+#     "oneClick": false,
+#     "perMachine": false,
+#     "allowToChangeInstallationDirectory": true,
+#     "deleteAppDataOnUninstall": false
+#   },
+#   "linux": {
+#     "target": [
+#       "AppImage"
+#     ],
+#     "artifactName": "${productName}-Linux-${version}.${ext}"
+#   }
+# }
+appId: com.studiohmr.twona.app
+productName: "2NA"
+directories:
+  buildResources: build
+files:
+  - "!**/.turbo/*"
+  - "!electron.vite.config.{js,ts,mjs,cjs}"
+  - "!{eslint.config.mjs,postcss.config.cjs,tailwind.config.js}"
+  - "!{tsconfig.json,tsconfig.*.json}"
+  - "!{.env,.env.*}"
+asarUnpack:
+  - resources/**
+afterSign: build/notarize.js
+win:
+  executableName: TWONA
+  artifactName: ${productName}-Windows-${version}-Setup.${ext}
+mac:
+  target:
+    - target: dmg
+      arch: x64
+  artifactName: ${productName}-Mac-${version}-Installer.${ext}
+linux:
+  target:
+    - target: AppImage
+  artifactName: ${productName}-Linux-${version}.${ext}
+nsis:
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+  deleteAppDataOnUninstall: false
+  artifactName: ${name}-${version}-setup.${ext}
+  shortcutName: ${productName}
+  uninstallDisplayName: ${productName}
+  createDesktopShortcut: always
