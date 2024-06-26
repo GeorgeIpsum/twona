@@ -1,3 +1,4 @@
+import MillionLint from "@million/lint";
 import react from "@vitejs/plugin-react";
 import {
   bytecodePlugin,
@@ -9,7 +10,6 @@ import { resolve } from "node:path";
 import svgr from "vite-plugin-svgr";
 import tsconfigPaths from "vite-tsconfig-paths";
 
-// https://vitejs.dev/config/
 export default defineConfig({
   main: {
     build: {
@@ -60,6 +60,13 @@ export default defineConfig({
       }),
       react(),
       tsconfigPaths(),
+      MillionLint.vite({
+        framework: "react",
+        rsc: false,
+        dev: false,
+        optimizeDOM: true,
+        telemetry: false,
+      }),
     ],
     define: {},
   }),

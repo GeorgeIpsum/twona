@@ -1,12 +1,15 @@
 import { computed } from "mobx";
 import {
+  ArraySet,
   Model,
+  ObjectMap,
   Ref,
   SnapshotInOf,
   fromSnapshot,
   getRootStore,
   isoStringToDateTransform,
   modelAction,
+  objectMap,
   prop,
 } from "mobx-keystone";
 
@@ -19,9 +22,9 @@ export type TwonaModel = IBaseModel | ISingletonModel;
 export type TwonaModelInstance = BaseModelInstance | SingletonModelInstance;
 
 interface StoreProps<T extends TwonaModelInstance> {
-  _data: T[];
-  selected: Ref<T>[];
-  hidden: Ref<T>[];
+  _data: ArraySet<T>;
+  selected: ObjectMap<Ref<T>>;
+  hidden: ObjectMap<Ref<T>>;
   lastSync: Date;
   loading: boolean;
   syncing: boolean;
@@ -30,9 +33,9 @@ interface StoreProps<T extends TwonaModelInstance> {
 
 export abstract class StoreModel<T extends TwonaModelInstance>
   extends Model(<T extends TwonaModelInstance>() => ({
-    _data: prop<T[]>(() => []),
-    selected: prop<Ref<T>[]>(() => []),
-    hidden: prop<Ref<T>[]>(() => []),
+    _data: prop<ArraySet<T>>(() => new ArraySet([])),
+    selected: prop<ObjectMap<Ref<T>>>(() => objectMap<Ref<T>>()),
+    hidden: prop<ObjectMap<Ref<T>>>(() => objectMap<Ref<T>>()),
     loading: prop<boolean>().withSetter(),
     syncing: prop<boolean>().withSetter(),
     errorInCreation: prop<boolean>(false),
@@ -52,8 +55,8 @@ export abstract class StoreModel<T extends TwonaModelInstance>
 
   @computed
   get data() {
-    return this._data.filter(
-      (datum) => !this.hidden.includes(this.ref(datum.$modelId)),
+    return new ArraySet(
+      this._data.items.filter((datum) => !this.hidden.has(datum.$modelId)),
     );
   }
 
@@ -62,47 +65,74 @@ export abstract class StoreModel<T extends TwonaModelInstance>
     const start = page * chunkSize;
     const end = start + chunkSize;
 
-    if (start > this.data.length) return [];
-    return this.data.slice(start, end);
+    if (start > this.data.items.length) return [];
+    return this.data.items.slice(start, end);
   }
 
   @modelAction
   setData(data: T[]) {
-    this._data = data;
+    this._data = new ArraySet(data);
   }
 
   @modelAction
-  setRaw(data: SnapshotInOf<T>[]) {
-    this._data = data.map((datum) => fromSnapshot<T>(datum));
+  setRawData(data: SnapshotInOf<T>[]) {
+    this._data = new ArraySet(data.map((datum) => fromSnapshot<T>(datum)));
   }
 
   @modelAction
-  addRaw(data: SnapshotInOf<T>[]) {
-    this._data.concat(data.map((datum) => fromSnapshot<T>(datum)));
+  addRawData(data: SnapshotInOf<T>[]) {
+    data.forEach((datum) => {
+      this._data.add(fromSnapshot<T>(datum));
+    });
   }
 
   @modelAction
   clearData() {
-    this._data = [];
+    this._data = new ArraySet([]);
   }
 
-  public byId(id: string): T | undefined {
-    return this.data.find((d) => d.$modelId === id);
+  public byId(id: string, includeHidden = false): T | undefined {
+    return includeHidden ? this._data[id] : this.data[id];
   }
 
   @modelAction
   public hide(item: string | T) {
     const ref = this.ref(item);
-    if (!this.hidden.includes(ref)) this.hidden.push(ref);
+    if (!this.hidden.has(ref.$modelId)) {
+      this.hidden.set(ref.$modelId, ref);
+      return true;
+    }
+    return false;
   }
 
   @modelAction
   public unhide(item: string | T) {
     const ref = this.ref(item);
-    const refIndex = this.hidden.indexOf(ref);
-    if (~refIndex) {
-      this.hidden.splice(refIndex, 1);
+    if (this.hidden.has(ref.$modelId)) {
+      this.hidden.delete(ref.$modelId);
+      return true;
     }
+    return false;
+  }
+
+  @modelAction
+  public select(item: string | T) {
+    const ref = this.ref(item);
+    if (!this.selected.has(ref.$modelId)) {
+      this.selected.set(ref.$modelId, ref);
+      return true;
+    }
+    return false;
+  }
+
+  @modelAction
+  public deselect(item: string | T) {
+    const ref = this.ref(item);
+    if (this.selected.has(ref.$modelId)) {
+      this.selected.delete(ref.$modelId);
+      return true;
+    }
+    return false;
   }
 }
 

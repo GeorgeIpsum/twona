@@ -1,11 +1,17 @@
 import cors from "cors";
 import express from "express";
 import { type Server, createServer } from "node:http";
+import supertokens from "supertokens-node";
+import {
+  errorHandler as superTokensErrorHandler,
+  middleware as superTokensMiddleware,
+} from "supertokens-node/framework/express";
 
 import { env, log, stdWarn } from "~/mori";
 import { attachLogger } from "~/mori/log";
 
-import { routes, setup } from "./routes";
+import { routePaths, setup } from "./routes";
+import { initAuth } from "./services/auth";
 
 let server: Server;
 
@@ -16,16 +22,23 @@ async function main(listen?: () => void) {
       text: [
         `${env.protocol}://${env.host}:${env.port}`,
         "REGISTERED ROUTES:",
-        ...routes.map((r) =>
-          r.router.stack.map((s) => `🛜 ${s.regexp}`).join("\n"),
-        ),
+        ...routePaths.map((path) => `  ${path}`),
       ],
     });
+    initAuth();
     const app = express();
-    app.use(cors());
+    app.use(
+      cors({
+        origin: "http://localhost:5174",
+        allowedHeaders: ["content-type", ...supertokens.getAllCORSHeaders()],
+        credentials: true,
+      }),
+    );
+    app.use(superTokensMiddleware());
     app.use(express.json());
     app.disable("x-powered-by");
     app.use(attachLogger);
+    app.use(superTokensErrorHandler());
     setup(app);
 
     server = createServer(app);

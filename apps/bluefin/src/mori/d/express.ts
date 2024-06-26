@@ -6,7 +6,7 @@ declare module "express" {
   interface Response {
     locals: Record<string, unknown> &
       Express.Locals & {
-        session?: import("@auth/express").Session | null;
+        session?: unknown;
       };
   }
 }

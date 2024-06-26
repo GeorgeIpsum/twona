@@ -7,6 +7,7 @@ router.get("/health", (req, res) => {
 });
 
 export default {
+  routes: "/health",
   setup: undefined,
   router,
 } satisfies Bluefin.Sakai;

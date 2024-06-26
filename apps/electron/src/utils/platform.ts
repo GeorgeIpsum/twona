@@ -35,4 +35,5 @@ export const isElectron = () => {
 
   return false;
 };
+
 export const isE = isElectron();

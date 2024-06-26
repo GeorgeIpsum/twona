@@ -18,6 +18,7 @@ router.use(
 );
 
 export default {
+  routes: "/trpc",
   setup: undefined,
   router,
 } satisfies Bluefin.Sakai;

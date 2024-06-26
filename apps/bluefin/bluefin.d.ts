@@ -2,10 +2,13 @@ declare namespace Bluefin {
   type Request = import("express").Request;
   type Response = import("express").Response;
   type NextFunction = import("express").NextFunction;
-  type Handler = (req: Request, res: Response, next: NextFunction) => void;
+
   type Express = import("express").Express;
   type Router = import("express").Router;
   type Locals = import("express").Locals;
+
+  type Handler = (req: Request, res: Response, next: NextFunction) => void;
+
   type ExpressSetup = (app: Express) => void;
 
   interface Config {
@@ -25,6 +28,7 @@ declare namespace Bluefin {
   }
 
   interface Sakai {
+    routes: Route | Route[];
     setup?: ExpressSetup;
     router: Router;
   }

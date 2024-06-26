@@ -1,7 +1,10 @@
+export type FilterFunc<T> = Array<T>["filter"];
+export type ForeachFunc<T> = Array<T>["forEach"];
+
 const NilSym = Symbol("NIL");
 export const asyncFilter = async <T>(
   array: T[],
-  ...[filter]: Parameters<Array<T>["filter"]>
+  ...[filter]: Parameters<FilterFunc<T>>
 ) => {
   return (
     await Promise.all(
@@ -17,7 +20,7 @@ export const asyncFilter = async <T>(
 
 export const asyncEach = async <T>(
   array: T[],
-  ...[forEach]: Parameters<Array<T>["forEach"]>
+  ...[forEach]: Parameters<ForeachFunc<T>>
 ) => {
   await Promise.allSettled(
     array.map(

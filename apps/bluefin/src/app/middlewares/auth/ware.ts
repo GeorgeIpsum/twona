@@ -1,11 +1,7 @@
-import { getSession } from "@auth/express";
 import type { NextFunction, Request, Response } from "express";
 
-import { authConfig } from "~/app/services/auth";
-
 const setup = async (req: Request, res: Response, next: NextFunction) => {
-  res.locals.session =
-    res.locals.session ?? (await getSession(req, authConfig));
+  res.locals.session = "";
   next();
 };
 
