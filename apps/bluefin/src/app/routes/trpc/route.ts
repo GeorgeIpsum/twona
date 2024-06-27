@@ -5,17 +5,22 @@ import {
 import { Router } from "express";
 import { appRouter } from "trpc";
 
-const createContext = (opts: CreateExpressContextOptions) => ({});
+const createContext = ({ req, res }: CreateExpressContextOptions) => {
+  return {
+    req,
+    res,
+    session: res.locals.session,
+  };
+};
 
 const router = Router({ mergeParams: true });
 
-router.use(
-  "/trpc",
-  createExpressMiddleware({
-    router: appRouter,
-    createContext,
-  }),
-);
+const trpcMiddleware = createExpressMiddleware({
+  router: appRouter,
+  createContext,
+});
+
+router.all("/", trpcMiddleware);
 
 export default {
   routes: "/trpc",

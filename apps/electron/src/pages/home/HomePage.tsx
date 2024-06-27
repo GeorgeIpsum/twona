@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { observer } from "mobx-react-lite";
+import { Link } from "react-router-dom";
 
 import Container from "~/components/layout/container";
 import Debug from "~/components/singletons/Debug";
@@ -12,28 +13,13 @@ const HomePage: React.FC = () => {
     Awaited<ReturnType<typeof client.getIntegrations>>
   >([]);
   const [loading, setLoading] = useState(true);
-  const [csrf, setCsrf] = useState<string | undefined>();
 
   useEffect(() => {
     client.getIntegrations().then((integrations) => {
       setIntegrations(integrations);
       setLoading(false);
     });
-
-    client.getCsrfToken().then((csrf) => {
-      setCsrf(csrf);
-    });
   }, []);
-
-  const getSignIn = async (name: string) => {
-    const integration = integrations.find((i) => i.name === name);
-
-    if (!integration) {
-      return;
-    }
-
-    client.signInWithProvider(integration.name);
-  };
 
   return (
     <>
@@ -43,13 +29,13 @@ const HomePage: React.FC = () => {
         "Loading..."
       ) : (
         <>
+          <Link to="/auth/callback/google">Signin</Link>
           <Container>
             <div className="flex items-center justify-start gap-2">
               {integrations.map((integration) => (
                 <IntegrationSignIn
                   key={integration.id}
                   integration={integration}
-                  csrf={csrf}
                 />
               ))}
             </div>

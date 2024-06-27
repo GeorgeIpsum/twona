@@ -29,6 +29,6 @@ SuperTokens.init({
     apiBasePath: "/auth",
     appName: "Twona",
   },
-  clientType: "web",
+  // clientType: "web",
   recipeList: [Session.init(), EmailPassword.init(), ThirdParty.init()],
 });

@@ -57,8 +57,14 @@ const renderText = (
 ) => {
   const margin = new Array(marginLength).fill(" ").join("");
   const padding = new Array(paddingLength).fill(" ").join("");
-  return `${margin}${colorCode}${otherCodes.join("")}${italicsCode}${padding}${text.padEnd(length, " ")}${padding}${resetCode}${margin}`;
+  return `${margin}${colorCode}${otherCodes.join("")}${italicsCode}${padding}${text.padEnd(length, ` `)}${padding}${resetCode}${margin}`;
 };
+
+const removeAnsi = (text: string) =>
+  text.replace(
+    /[\u001b\u009b][[()#;?]*(?:[0-9]{1,4}(?:;[0-9]{0,4})*)?[0-9A-ORZcf-nqry=><]/g,
+    "",
+  );
 
 const buildLines = (
   text: string,
@@ -66,10 +72,11 @@ const buildLines = (
   wordBoundary = DEFAULT_WORD_BOUNDARY,
 ) => {
   const lines: string[] = [];
-  if (text.length <= rowLength) {
-    lines.push(text);
+  const fmtText = removeAnsi(text);
+  if (fmtText.length <= rowLength) {
+    lines.push(fmtText);
   } else {
-    const boundarySplit = text.split(wordBoundary);
+    const boundarySplit = fmtText.split(wordBoundary);
     boundarySplit.reduce((w, word) => {
       const currentIndex = Math.max(w.length - 1, 0);
       let currentLine = w[currentIndex] ?? "";
@@ -182,6 +189,7 @@ const log = pino(
   pino.multistream([{ stream: process.stdout }]),
 );
 
+const skippedPaths = ["/health", "/favicon.ico"];
 export const attachLogger = httpLogger({
   logger: log,
   genReqId: (req, res) => {
@@ -203,12 +211,21 @@ export const attachLogger = httpLogger({
   name: "http",
   serializers: {
     req: (req) => {
-      if (req.url === "/health") {
+      if (req.headers["x-wait-on-req"]) {
+        return "Client will launch momentarily... 🚀";
+      }
+      if (skippedPaths.includes(req.url)) {
         return { id: req.id, remoteAddress: req.ip ?? req.remoteAddress };
       }
       return req;
     },
     res: (res) => {
+      if (res.raw.req.headers["x-wait-on-req"]) {
+        return undefined;
+      }
+      if (skippedPaths.includes(res.raw.req.baseUrl)) {
+        return "ok";
+      }
       return res;
     },
     ...redactedKeys,

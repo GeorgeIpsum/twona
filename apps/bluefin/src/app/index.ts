@@ -2,50 +2,53 @@ import cors from "cors";
 import express from "express";
 import { type Server, createServer } from "node:http";
 import supertokens from "supertokens-node";
-import {
-  errorHandler as superTokensErrorHandler,
-  middleware as superTokensMiddleware,
-} from "supertokens-node/framework/express";
 
 import { env, log, stdWarn } from "~/mori";
 import { attachLogger } from "~/mori/log";
+import { fmtRoutes, getExpressRoutes } from "~/mori/routes";
 
-import { routePaths, setup } from "./routes";
-import { initAuth } from "./services/auth";
+import { postSetup, preSetup, setup as setupWares } from "./middlewares";
+import { setup as setupRoutes } from "./routes";
 
 let server: Server;
 
 async function main(listen?: () => void) {
   try {
-    stdWarn({
-      header: `Bluefin v${env.version}${env.prod ? "" : ` (${env.env})`}`,
-      text: [
-        `${env.protocol}://${env.host}:${env.port}`,
-        "REGISTERED ROUTES:",
-        ...routePaths.map((path) => `  ${path}`),
-      ],
-    });
-    initAuth();
     const app = express();
+
+    app.disable("x-powered-by");
     app.use(
       cors({
-        origin: "http://localhost:5174",
+        origin: "http://localhost:5173",
         allowedHeaders: ["content-type", ...supertokens.getAllCORSHeaders()],
         credentials: true,
       }),
     );
-    app.use(superTokensMiddleware());
+
+    preSetup(app);
+
     app.use(express.json());
-    app.disable("x-powered-by");
     app.use(attachLogger);
-    app.use(superTokensErrorHandler());
-    setup(app);
+
+    setupWares(app);
+    setupRoutes(app);
+
+    postSetup(app);
 
     server = createServer(app);
-    return server.listen(env.port, listen);
+
+    stdWarn({
+      header: `🐟 Bluefin v${env.version}${env.prod ? "" : ` (${env.env})`}`,
+      text: [
+        `${env.protocol}://${env.host}:${env.port}`,
+        ...fmtRoutes(getExpressRoutes(app, { spacer: 4 })),
+      ],
+    });
+
+    return { server: server.listen(env.port, listen), app };
   } catch (e) {
     errorHandler(e as Error);
-    return null;
+    return { server: null, app: null };
   }
 }
 

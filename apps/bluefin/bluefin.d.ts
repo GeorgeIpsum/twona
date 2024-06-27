@@ -23,8 +23,10 @@ declare namespace Bluefin {
       : R;
 
   interface Deba {
+    preSetup?: ExpressSetup;
     setup?: Handler;
     check: Handler;
+    postSetup?: ExpressSetup;
   }
 
   interface Sakai {

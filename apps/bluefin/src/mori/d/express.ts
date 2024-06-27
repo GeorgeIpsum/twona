@@ -6,7 +6,8 @@ declare module "express" {
   interface Response {
     locals: Record<string, unknown> &
       Express.Locals & {
-        session?: unknown;
+        session?: import("supertokens-node/recipe/session").SessionContainer;
+        sessionUserId?: string;
       };
   }
 }

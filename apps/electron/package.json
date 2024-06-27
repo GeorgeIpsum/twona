@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "electron-vite dev",
-    "server-up": "wait-on http://localhost:3000/health && echo 'Bluefin: 🛜 LIVE'",
+    "server-up": "wait-on -c .wait.rc.json http://localhost:3000/health && echo 'Bluefin: 🛜 LIVE'",
     "build": "electron-vite build && cp -r out/renderer html",
     "lint": "eslint . --fix",
     "start": "electron-vite preview",

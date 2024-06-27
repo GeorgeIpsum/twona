@@ -6,6 +6,8 @@ import {
   createHashRouter,
 } from "react-router-dom";
 
+import { AuthCallback } from "~/services/auth";
+
 import { isE } from "../utils/platform";
 import HomePage from "./home/HomePage";
 
@@ -16,6 +18,10 @@ const routes: RouteObject[] = [
   {
     index: true,
     Component: HomePage,
+  },
+  {
+    path: "/auth/callback/:provider",
+    Component: AuthCallback,
   },
 ];
 

@@ -17,12 +17,14 @@ export const initAuth = () => {
       // learn more about this on https://supertokens.com/docs/thirdpartyemailpassword/appinfo
       appName: "Twona",
       apiDomain: "http://localhost:3000",
-      websiteDomain: "http://localhost:5174",
+      websiteDomain: "http://localhost:3",
       apiBasePath: "/auth",
       websiteBasePath: "/",
     },
     recipeList: [
-      EmailPassword.init(),
+      EmailPassword.init({
+        emailDelivery: {},
+      }),
       ThirdParty.init({
         signInAndUpFeature: {
           providers: [
@@ -65,13 +67,38 @@ export const initAuth = () => {
                 ],
               },
             },
+            {
+              config: {
+                name: "Discord",
+                thirdPartyId: "discord",
+                clients: [
+                  {
+                    clientId: "",
+                    clientSecret: "",
+                  },
+                ],
+              },
+            },
+            {
+              config: {
+                name: "Twitch",
+                thirdPartyId: "twitch",
+              },
+            },
+            {
+              config: {
+                name: "Spotify",
+                thirdPartyId: "spotify",
+              },
+            },
           ],
         },
       }),
-      Session.init(), // initializes session features
+      Session.init({}), // initializes session features
       Dashboard.init({
         admins: ["georgeipsum@gmail.com"],
       }),
     ],
+    telemetry: false,
   });
 };

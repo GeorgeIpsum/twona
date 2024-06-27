@@ -72,5 +72,5 @@ nsis:
   deleteAppDataOnUninstall: false
   artifactName: ${name}-${version}-setup.${ext}
   shortcutName: ${productName}
-  uninstallDisplayName: ${productName}
-  createDesktopShortcut: always
+  uninstallDisplayName: ${productName}-uninstaller
+  createDesktopShortcut: never

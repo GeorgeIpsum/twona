@@ -3,12 +3,12 @@ import { type Express } from "express";
 import health from "./health/route";
 import trpc from "./trpc/route";
 
-export const routes = [trpc, health];
-export const routePaths = routes.map(({ routes }) => routes).flat();
+export const routes: Bluefin.Sakai[] = [trpc, health];
 
 export const setup = (app: Express) => {
-  routes.forEach(({ setup, router }) => {
-    // setup?.(app);
-    app.use(router);
+  routes.forEach(({ setup, router, routes }) => {
+    setup?.(app);
+    Object.defineProperty(router, "name", { value: routes });
+    app.use(routes, router);
   });
 };
